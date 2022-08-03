@@ -29,6 +29,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "gatsby-plugin-eslint": "2.0.8",
+    "gh-pages": "^4.0.0",
     "prettier": "2.0.5",
     "tailwindcss": "1.6.2"
   },
@@ -36,6 +37,7 @@
     "analyze:lint": "eslint --ext .jsx --ext .js src",
     "analyze:prettier": "prettier --list-different \"src/**/*.{css,js,jsx,json,md}\"",
     "analyze": "npm run analyze:lint && npm run analyze:prettier",
+    "deploy": "gatsby build && gh-pages -d public -b main",
     "fix:lint": "eslint --ext .jsx --ext .js --fix src",
     "fix:prettier": "prettier --write \"src/**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
