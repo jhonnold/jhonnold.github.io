@@ -141,8 +141,6 @@ module.exports = {
                 pageTransitionDelay: 0,
             },
         },
-        'gatsby-plugin-eslint',
-        'gatsby-plugin-react-helmet',
         {
             resolve: 'gatsby-plugin-manifest',
             options: {

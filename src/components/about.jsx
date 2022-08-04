@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import Section from './section';
 
@@ -23,9 +23,9 @@ const About = ({ about, specific, links, image }) => (
                     </li>
                 </ul>
             </div>
-            <Img
+            <GatsbyImage
                 alt="Jay Honnold Portrait"
-                fluid={image.childImageSharp.fluid}
+                image={getImage(image)}
                 className="w-64 md:w-full shadow-md order-1 md:order-2"
             />
         </div>

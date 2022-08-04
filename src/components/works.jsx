@@ -1,6 +1,6 @@
 import React from 'react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Section from './section';
 
 const Works = ({ works, images }) => (
@@ -10,7 +10,6 @@ const Works = ({ works, images }) => (
             <div className="flex flex-wrap container mx-auto items-stretch">
                 {works.map(w => {
                     const img = images.edges.find(e => e.node.relativePath === w.image);
-                    const { fluid } = img.node.childImageSharp;
 
                     return (
                         <div className="lg:w-1/3 sm:w-1/2 w-full p-4" key={w.title}>
@@ -21,10 +20,10 @@ const Works = ({ works, images }) => (
                             >
                                 {w.href ? (
                                     <OutboundLink href={w.href}>
-                                        <Img className="w-full" fluid={fluid} alt={w.title} />
+                                        <GatsbyImage className="w-full" image={getImage(img.node)} alt={w.title} />
                                     </OutboundLink>
                                 ) : (
-                                    <Img className="w-full" fluid={fluid} alt={w.title} />
+                                    <GatsbyImage className="w-full" image={getImage(img.node)} alt={w.title} />
                                 )}
                                 <div className="px-6 py-4 bg-white flex-1 flex flex-col justify-between">
                                     <h3 className="text-lg">{w.title}</h3>

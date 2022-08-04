@@ -67,18 +67,14 @@ export const query = graphql`
                     relativePath
                     name
                     childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
                     }
                 }
             }
         }
         aboutImage: file(relativePath: { eq: "jay.jpg" }) {
             childImageSharp {
-                fluid {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
+                gatsbyImageData(placeholder: TRACED_SVG)
             }
         }
     }

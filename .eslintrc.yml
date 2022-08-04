@@ -1,25 +1,22 @@
 env:
-  es2020: true
-  node: true
   browser: true
+  es2021: true
 extends:
-  - airbnb
+  - 'plugin:eslint-comments/recommended'
+  - 'plugin:promise/recommended'
   - prettier
-  - prettier/react
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 11
+  ecmaVersion: 12
   sourceType: module
+settings:
+  react:
+    version: detect
 plugins:
+  - eslint-comments
+  - promise
   - react
-ignorePatterns:
-  - gatsby-*.js
-  - tailwind.config.js
-  - '$virtual'
+  - prettier
 rules:
-  jsx-a11y/label-has-associated-control:
-    - error
-    - assert: either
-  react/prop-types:
-    - off
+  prettier/prettier: 'error'

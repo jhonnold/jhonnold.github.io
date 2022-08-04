@@ -7,7 +7,7 @@ const colors = {
 };
 
 module.exports = {
-    purge: ['./src/**/*.{js,jsx}'],
+    content: ['./src/**/*.{js,jsx}'],
     theme: {
         ...colors,
         backgroundColor: colors,
