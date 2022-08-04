@@ -60,10 +60,25 @@ module.exports = {
         ],
         works: [
             {
+                title: 'Berserk Chess Engine',
+                stack: ['devicon-c-plain', 'devicon-gcc-plain'],
+                image: 'works/berserk.jpg',
+                description: 'UCI compliant chess engine written in C. Utilizes an optimized minimax search with a self-trained neural net evaluation.',
+                href: 'https://github.com/jhonnold/berserk',
+            },
+            {
+                title: 'Live Chess Viewer',
+                stack: ['devicon-typescript-plain', 'devicon-express-original', 'devicon-nodejs-plain'],
+                image: 'works/tlcv.png',
+                description: 'Web viewer service for Tom\'s live chess server broadcasts. Utilized by CCRL to broadcast their events.',
+                href: 'https://tlcv.net',
+            },
+            {
                 title: 'FN Dash',
                 stack: ['devicon-python-plain', 'devicon-react-original', 'devicon-postgresql-plain'],
                 image: 'works/fndash.png',
                 description: 'Fortnite statistics tracking website. Data collection is automatic upon registration.',
+                href: 'https://github.com/jhonnold/fndash',
             },
             {
                 title: '@jhonnold/react-chart.js',
@@ -71,13 +86,6 @@ module.exports = {
                 image: 'works/chartjs.png',
                 description: 'React wrapper for the popular Chart.js library.',
                 href: 'https://jhonnold.github.io/react-chart.js/#/',
-            },
-            {
-                title: 'Berserk Chess Engine',
-                stack: ['devicon-c-plain'],
-                image: 'works/berserk.jpg',
-                description: 'UCI compliant chess engine written in C. Utilizes an optimized minimax search with a self-trained neural net evaluation.',
-                href: 'https://github.com/jhonnold/berserk',
             },
             {
                 title: 'Coder Website',
