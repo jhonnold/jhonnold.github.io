@@ -9,7 +9,7 @@ module.exports = {
         title: 'Jay Honnold',
         description: "Jay Honnold's Portfolio and Website",
         about:
-            "I am a full-stack developer with experience working in multiple web and backend frameworks. Throughout my career I have designed, built, and maintained many different projects. Being thorough in nature, I'm determined to write code that is elegant, maintainable, and secure.",
+            "I am a full-stack developer with experience working in multiple web and backend frameworks. Throughout my career I have designed, built, and maintained both legacy and new projects. Being thorough in nature, I'm determined to write code that is elegant, maintainable, and secure.",
         specific:
             "Specifically, I have worked a majority of my frontend career in React, though Vue and Svelte seem quite interesting to me. On the backend I have worked equals parts in Spring and Express in combination with many different SQL databases. I'm always interested in learning more and welcome the idea of trying something new!",
         links: {
@@ -18,12 +18,12 @@ module.exports = {
         },
         experience: [
             {
-                title: 'SDE I',
+                title: 'SDE I / SDE II',
                 company: 'Amazon',
                 start: 'February 2021',
                 end: 'Present',
                 details:
-                    'Developing and maintaing an order ingestion layer within Multi-Channel Fulfillment. Work has included designing and building new features, upgrading and modernizing legacy systems, as well as debugging and resolving operation related issues.',
+                    'Developing and maintaing an order ingestion layer within Multi-Channel Fulfillment. Work has included designing and building new features, upgrading and modernizing legacy systems, as well as debugging and resolving operation related issues. In April of 2022, I transfered to AWS. Here, my focused changed to developing internal tools assisting other AWS teams with global and regional expansion. These tools focus on automating common and tedious manual tasks experienced when building a service in a new region.',
             },
             {
                 title: 'Full-Stack Developer',
