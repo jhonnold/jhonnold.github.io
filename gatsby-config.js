@@ -11,10 +11,9 @@ module.exports = {
         about:
             "I am a full-stack developer with experience working in multiple web and backend frameworks. Throughout my career I have designed, built, and maintained both legacy and new projects. Being thorough in nature, I'm determined to write code that is elegant, maintainable, and secure.",
         specific:
-            "Specifically, I have worked a majority of my frontend career in React, though Vue and Svelte seem quite interesting to me. On the backend I have worked equals parts in Spring and Express in combination with many different SQL databases. I'm always interested in learning more and welcome the idea of trying something new!",
+            "Specifically, I have worked a majority of my frontend career in React, though Vue and Svelte seem quite interesting to me. On the backend I have worked equals parts in Spring and Express in combination with both SQL and No-SQL databases. I'm always interested in learning more and welcome the idea of trying something new!",
         links: {
             github: 'https://github.com/jhonnold',
-            linkedin: 'https://www.linkedin.com/in/jay-honnold-123275140/',
         },
         experience: [
             {
@@ -41,22 +40,6 @@ module.exports = {
                 details:
                     'Three year old startup that assists entrepreneurs in achieving their goals through assistance in product development and business strategy. Developed the android application for Victor, a mobile tool for veterans. Used react-native and redux for the application, and ruby on rails for the backend. In addition, developed “Coder Platform” that allows non-technical users to interface with developers in a more efficient manner. Used react and redux for the web application, and ruby on rails for the backend. Architected a new version of the “Coder Platform,” setting up the PostgreSQL database and backend with express/node.',
             },
-            {
-                title: 'Software Consultant',
-                company: 'Burtch Works',
-                start: 'May 2017',
-                end: 'June 2017',
-                details:
-                    'Assisted with the migration to a new applicant tracking system. Evaluated 15 different ATS’ for ease- of-use, functionality, flexibility, service record, and back-end design.',
-            },
-            {
-                title: 'Web Developer',
-                company: 'Flash Dealer LLC',
-                start: 'June 2013',
-                end: 'August 2013',
-                details:
-                    'Developed new website for firm selling branded flash drives. Modified firm’s CRM system to work with the new website and automatically generate sales reports. Built with HTML, CSS, and vanilla javascript.',
-            },
         ],
         works: [
             {
@@ -74,6 +57,13 @@ module.exports = {
                 href: 'https://tlcv.net',
             },
             {
+                title: 'Torch Chess Engine',
+                stack: ['devicon-cplusplus-plain', 'devicon-gcc-plain'],
+                image: 'works/torch.png',
+                description: 'UCI compliant chess engine written in C++. Worked with other chess developers to build one of the strongest engines to date.',
+                href: 'https://www.chess.com/news/view/torch-chess-engine',
+            },
+            {
                 title: 'FN Dash',
                 stack: ['devicon-python-plain', 'devicon-react-original', 'devicon-postgresql-plain'],
                 image: 'works/fndash.png',
@@ -81,51 +71,11 @@ module.exports = {
                 href: 'https://github.com/jhonnold/fndash',
             },
             {
-                title: '@jhonnold/react-chart.js',
-                stack: ['devicon-react-original'],
+                title: 'react-chartjs-2',
+                stack: ['devicon-react-original', 'devicon-npm-original-wordmark'],
                 image: 'works/chartjs.png',
-                description: 'React wrapper for the popular Chart.js library.',
-                href: 'https://jhonnold.github.io/react-chart.js/#/',
-            },
-            {
-                title: 'Coder Website',
-                stack: [
-                    'devicon-javascript-plain',
-                    'devicon-sass-original',
-                    'devicon-html5-plain',
-                    'devicon-foundation-plain',
-                ],
-                image: 'works/coder-website.png',
-                description: 'Main website for Coder Inc.',
-                href: 'https://codernetwork.io/',
-            },
-            {
-                title: 'Coder Platform',
-                stack: ['devicon-rails-plain', 'devicon-react-original', 'devicon-postgresql-plain'],
-                description: 'Backlog tool that brings clients closer to projects by reporting out progress live.',
-                image: 'works/coder-platform.png',
-            },
-            {
-                title: 'Blogging Site',
-                stack: [
-                    'devicon-javascript-plain',
-                    'devicon-sass-original',
-                    'devicon-html5-plain',
-                    'devicon-postgresql-plain',
-                ],
-                description: 'Personal blog built for a friend. LaTeX support built in for advanced text formatting.',
-                image: 'works/sam-miller.png',
-            },
-            {
-                title: 'Ace Anatomy Homepage',
-                stack: [
-                    'devicon-javascript-plain',
-                    'devicon-sass-original',
-                    'devicon-html5-plain',
-                    'devicon-foundation-plain',
-                ],
-                description: 'Main webiste for Ace Anatomy.',
-                image: 'works/ace-anatomy.png',
+                description: 'React wrapper for the popular Chart.js library. Contributed heavily to the OSS project during its modernization of react.',
+                href: 'https://react-chartjs-2.js.org/',
             },
         ],
     },

@@ -43,7 +43,6 @@ export const query = graphql`
                 specific
                 links {
                     github
-                    linkedin
                 }
                 experience {
                     title

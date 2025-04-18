@@ -16,11 +16,6 @@ const About = ({ about, specific, links, image }) => (
                             <i className="devicon-github-plain" />
                         </OutboundLink>
                     </li>
-                    <li className="mx-4">
-                        <OutboundLink href={links.linkedin}>
-                            <i className="devicon-linkedin-plain" />
-                        </OutboundLink>
-                    </li>
                 </ul>
             </div>
             <GatsbyImage
