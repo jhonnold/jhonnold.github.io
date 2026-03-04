@@ -1,0 +1,15 @@
+{
+    "name": "honnold.me",
+    "short_name": "starter",
+    "start_url": "/",
+    "background_color": "#fafafa",
+    "theme_color": "#011c27",
+    "display": "minimal-ui",
+    "icons": [
+        {
+            "src": "/images/icon.webp",
+            "sizes": "512x512",
+            "type": "image/webp"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= site.meta.title %></title>
+        <meta name="description" content="<%= site.meta.description %>" />
+        <meta name="keywords" content="<%= site.meta.keywords %>" />
+        <meta property="og:title" content="<%= site.meta.title %>" />
+        <meta property="og:description" content="<%= site.meta.description %>" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="<%= site.meta.ogImage %>" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="<%= site.meta.title %>" />
+        <meta name="twitter:description" content="<%= site.meta.description %>" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="theme-color" content="#011c27" />
+        <link rel="icon" href="/images/icon.webp" type="image/webp" />
+    </head>
+    <body class="bg-navy">
+        <!-- Navigation dots -->
+        <nav class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col" aria-label="Section navigation">
+            <% site.nav.forEach(function(label, i) { %>
+            <div class="nav-item">
+                <span class="nav-tooltip"><%= label %></span>
+                <button
+                    class="nav-dot"
+                    data-nav-dot="<%= i %>"
+                    aria-label="Go to <%= label %>"
+                    aria-pressed="false"
+                ></button>
+            </div>
+            <% }); %>
+        </nav>
+
+        <!-- Scroll container -->
+        <main
+            class="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
+            data-scroll-container
+            tabindex="0"
+        >
+            <!-- Hero -->
+            <section class="h-screen snap-start bg-navy text-white flex items-center" data-section="0">
+                <div class="flex flex-col justify-center items-center w-full">
+                    <h2 class="text-4xl md:text-6xl my-4 font-mono reveal">
+                        <span class="text-gold">Hello,</span>
+                        <span> World!</span>
+                    </h2>
+                    <div class="w-full">
+                        <div class="container mx-auto px-8 flex justify-center">
+                            <img
+                                src="/images/table-contents.svg"
+                                alt="Developer table"
+                                class="min-w-[512px] h-48 md:h-auto reveal"
+                            />
+                        </div>
+                    </div>
+                    <hr class="w-full -m-px border-2 border-white" />
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="min-h-screen snap-start bg-white text-navy flex items-center" data-section="1">
+                <div
+                    class="flex flex-col md:flex-row justify-center items-center container mx-auto p-8 text-center md:text-left"
+                >
+                    <div class="md:mr-16 order-2 md:order-1 reveal">
+                        <h1 class="text-3xl md:text-4xl my-4"><%= site.about.heading %></h1>
+                        <p class="font-light mb-2"><%= site.about.text %></p>
+                        <p class="font-light mb-4"><%= site.about.specific %></p>
+                        <ul class="flex text-3xl justify-center md:justify-start">
+                            <li class="mr-4">
+                                <a
+                                    href="<%= site.about.links.github %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub profile"
+                                >
+                                    <i class="devicon-github-plain"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <picture class="w-64 md:w-80 shrink-0 shadow-md order-1 md:order-2 reveal">
+                        <source srcset="<%= site.about.image.avif %>" type="image/avif" />
+                        <img
+                            src="<%= site.about.image.webp %>"
+                            alt="Jay Honnold Portrait"
+                            class="blur-up w-full"
+                            style="background: url('<%= site.about.image.placeholder %>') center/cover no-repeat"
+                            loading="lazy"
+                        />
+                    </picture>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="min-h-screen snap-start bg-navy text-white flex items-center" data-section="2">
+                <div class="flex flex-col justify-center items-center container mx-auto p-4">
+                    <h2 class="text-2xl reveal">Experience</h2>
+                    <% site.experience.forEach(function(e) { %>
+                    <article class="w-full my-8 reveal">
+                        <h3 class="flex flex-wrap items-center justify-between mb-2">
+                            <span class="w-full md:w-auto">
+                                <span class="text-gold text-lg"><%= e.title %></span> <%= e.company %>
+                            </span>
+                            <span class="text-base md:text-lg"> <%= e.start %> - <%= e.end %> </span>
+                        </h3>
+                        <p class="font-light"><%= e.details %></p>
+                    </article>
+                    <% }); %>
+                </div>
+            </section>
+
+            <!-- Works -->
+            <section class="min-h-screen snap-start bg-white text-navy flex items-center" data-section="3">
+                <div class="mx-auto p-4">
+                    <h2 class="text-2xl text-center mb-8 reveal">Current & Previous Work</h2>
+                    <div class="flex flex-wrap container mx-auto items-stretch">
+                        <% site.works.forEach(function(w) { %>
+                        <div class="lg:w-1/3 sm:w-1/2 w-full p-4 reveal">
+                            <div
+                                class="overflow-hidden shadow-md h-full flex flex-col <%= w.href ? 'transform hover:scale-105 transition duration-100 cursor-pointer' : '' %>"
+                            >
+                                <% if (w.href) { %>
+                                <a href="<%= w.href %>" target="_blank" rel="noopener noreferrer">
+                                    <picture>
+                                        <source srcset="<%= w.image.avif %>" type="image/avif" />
+                                        <img
+                                            src="<%= w.image.src %>"
+                                            alt="<%= w.title %>"
+                                            class="blur-up w-full"
+                                            style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
+                                            loading="lazy"
+                                        />
+                                    </picture>
+                                </a>
+                                <% } else { %>
+                                <picture>
+                                    <source srcset="<%= w.image.avif %>" type="image/avif" />
+                                    <img
+                                        src="<%= w.image.src %>"
+                                        alt="<%= w.title %>"
+                                        class="blur-up w-full"
+                                        style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
+                                        loading="lazy"
+                                    />
+                                </picture>
+                                <% } %>
+                                <div class="px-6 py-4 bg-white flex-1 flex flex-col justify-between">
+                                    <h3 class="text-lg"><%= w.title %></h3>
+                                    <p class="font-light my-2"><%= w.description %></p>
+                                    <ul class="flex">
+                                        <% w.stack.forEach(function(icon) { %>
+                                        <li class="mr-4 bg-navy px-2 py-1" title="<%= icon %>">
+                                            <i class="<%= icon %> text-gold"></i>
+                                        </li>
+                                        <% }); %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script type="module" src="./src/js/main.js"></script>
+    </body>
+</html>
