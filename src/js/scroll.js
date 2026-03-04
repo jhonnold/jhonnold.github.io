@@ -21,7 +21,7 @@ export function initScrollNav() {
                 }
             }
         },
-        { root: container, threshold: 0.5 }
+        { root: container, threshold: 0.5 },
     );
 
     sections.forEach(section => observer.observe(section));
