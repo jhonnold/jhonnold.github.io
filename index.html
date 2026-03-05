@@ -9,20 +9,27 @@
         <meta property="og:title" content="<%= site.meta.title %>" />
         <meta property="og:description" content="<%= site.meta.description %>" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="<%= site.meta.url %>" />
         <meta property="og:image" content="<%= site.meta.ogImage %>" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="<%= site.meta.title %>" />
         <meta name="twitter:description" content="<%= site.meta.description %>" />
+        <meta name="twitter:image" content="<%= site.meta.ogImage %>" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css"
+            integrity="sha384-6iv3tXABd3c9DYulXujJl8n22ahn/12f45MomxoPv6jBX4LBE4gNJjfkx5mAKIqR"
+            crossorigin="anonymous"
+        />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#011c27" />
         <link rel="icon" href="/images/icon.webp" type="image/webp" />
     </head>
     <body class="bg-navy">
         <!-- Navigation dots -->
-        <nav class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col" aria-label="Section navigation">
+        <nav class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4" aria-label="Section navigation">
             <% site.nav.forEach(function(label, i) { %>
             <div class="nav-item">
                 <span class="nav-tooltip"><%= label %></span>
@@ -45,15 +52,17 @@
             <!-- Hero -->
             <section class="h-screen snap-start bg-navy text-white flex items-center" data-section="0">
                 <div class="flex flex-col justify-center items-center w-full">
-                    <h2 class="text-4xl md:text-6xl my-4 font-mono reveal">
+                    <h1 class="text-4xl md:text-6xl my-4 font-mono reveal">
                         <span class="text-gold">Hello,</span>
                         <span> World!</span>
-                    </h2>
+                    </h1>
                     <div class="w-full">
                         <div class="container mx-auto px-8 flex justify-center">
                             <img
                                 src="/images/table-contents.svg"
                                 alt="Developer table"
+                                width="836"
+                                height="339"
                                 class="min-w-[512px] h-48 md:h-auto reveal"
                             />
                         </div>
@@ -68,7 +77,7 @@
                     class="flex flex-col md:flex-row justify-center items-center container mx-auto p-8 text-center md:text-left"
                 >
                     <div class="md:mr-16 order-2 md:order-1 reveal">
-                        <h1 class="text-3xl md:text-4xl my-4"><%= site.about.heading %></h1>
+                        <h2 class="text-3xl md:text-4xl my-4"><%= site.about.heading %></h2>
                         <p class="font-light mb-2"><%= site.about.text %></p>
                         <p class="font-light mb-4"><%= site.about.specific %></p>
                         <ul class="flex text-3xl justify-center md:justify-start">
@@ -89,6 +98,8 @@
                         <img
                             src="<%= site.about.image.webp %>"
                             alt="Jay Honnold Portrait"
+                            width="<%= site.about.image.width %>"
+                            height="<%= site.about.image.height %>"
                             class="blur-up w-full"
                             style="background: url('<%= site.about.image.placeholder %>') center/cover no-repeat"
                             loading="lazy"
@@ -132,6 +143,8 @@
                                         <img
                                             src="<%= w.image.src %>"
                                             alt="<%= w.title %>"
+                                            width="<%= w.image.width %>"
+                                            height="<%= w.image.height %>"
                                             class="blur-up w-full"
                                             style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
                                             loading="lazy"
@@ -144,6 +157,8 @@
                                     <img
                                         src="<%= w.image.src %>"
                                         alt="<%= w.title %>"
+                                        width="<%= w.image.width %>"
+                                        height="<%= w.image.height %>"
                                         class="blur-up w-full"
                                         style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
                                         loading="lazy"
@@ -154,9 +169,13 @@
                                     <h3 class="text-lg"><%= w.title %></h3>
                                     <p class="font-light my-2"><%= w.description %></p>
                                     <ul class="flex">
-                                        <% w.stack.forEach(function(icon) { %>
-                                        <li class="mr-4 bg-navy px-2 py-1" title="<%= icon %>">
-                                            <i class="<%= icon %> text-gold"></i>
+                                        <% w.stack.forEach(function(s) { %>
+                                        <li
+                                            class="mr-4 bg-navy px-2 py-1"
+                                            title="<%= s.label %>"
+                                            aria-label="<%= s.label %>"
+                                        >
+                                            <i class="<%= s.icon %> text-gold" aria-hidden="true"></i>
                                         </li>
                                         <% }); %>
                                     </ul>

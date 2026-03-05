@@ -1,18 +1,19 @@
 import sharp from 'sharp';
-import { readdir, mkdir, copyFile, access } from 'node:fs/promises';
+import { readdir, mkdir, copyFile, stat } from 'node:fs/promises';
 import { join, extname, basename } from 'node:path';
 
 const SRC = 'src/images';
 const OUT = 'public/images';
 
 const PASSTHROUGH = new Set(['.svg', '.webp']);
+const MAX_WIDTH = 640;
 
-async function exists(path) {
+async function isStale(srcPath, outPath) {
     try {
-        await access(path);
-        return true;
+        const [srcStat, outStat] = await Promise.all([stat(srcPath), stat(outPath)]);
+        return srcStat.mtimeMs > outStat.mtimeMs;
     } catch {
-        return false;
+        return true;
     }
 }
 
@@ -21,19 +22,21 @@ async function optimizeImage(srcPath, outDir, name, ext) {
     const avifOut = join(outDir, `${name}.avif`);
     const placeholderOut = join(outDir, `${name}-placeholder.webp`);
 
-    const img = sharp(srcPath);
+    const meta = await sharp(srcPath).metadata();
+    const needsResize = meta.width > MAX_WIDTH;
+    const img = needsResize ? sharp(srcPath).resize({ width: MAX_WIDTH }) : sharp(srcPath);
 
     const tasks = [];
 
-    if (!(await exists(webpOut))) {
+    if (await isStale(srcPath, webpOut)) {
         tasks.push(img.clone().webp({ quality: 80 }).toFile(webpOut));
     }
 
-    if (!(await exists(avifOut))) {
+    if (await isStale(srcPath, avifOut)) {
         tasks.push(img.clone().avif({ quality: 65 }).toFile(avifOut));
     }
 
-    if (!(await exists(placeholderOut))) {
+    if (await isStale(srcPath, placeholderOut)) {
         tasks.push(img.clone().resize(20).webp({ quality: 50 }).toFile(placeholderOut));
     }
 
@@ -41,7 +44,7 @@ async function optimizeImage(srcPath, outDir, name, ext) {
         await Promise.all(tasks);
         console.log(`  optimized: ${name}${ext}`);
     } else {
-        console.log(`  skipped:   ${name}${ext} (already exists)`);
+        console.log(`  skipped:   ${name}${ext} (up to date)`);
     }
 }
 
@@ -63,11 +66,11 @@ async function processDirectory(srcDir, outDir) {
         const name = basename(entry.name, ext);
 
         if (PASSTHROUGH.has(ext)) {
-            if (!(await exists(destPath))) {
+            if (await isStale(srcPath, destPath)) {
                 await copyFile(srcPath, destPath);
                 console.log(`  copied:    ${entry.name}`);
             } else {
-                console.log(`  skipped:   ${entry.name} (already exists)`);
+                console.log(`  skipped:   ${entry.name} (up to date)`);
             }
             continue;
         }

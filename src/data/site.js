@@ -4,7 +4,7 @@ export const site = {
         description: "Jay Honnold's Portfolio and Website",
         keywords: 'developer, fullstack, software, portfolio',
         url: 'https://honnold.me',
-        ogImage: '/images/jay.webp',
+        ogImage: 'https://honnold.me/images/jay.webp',
     },
     about: {
         heading: 'Jay Honnold',
@@ -15,6 +15,8 @@ export const site = {
             webp: '/images/jay.webp',
             avif: '/images/jay.avif',
             placeholder: '/images/jay-placeholder.webp',
+            width: 640,
+            height: 1138,
         },
         links: {
             github: 'https://github.com/jhonnold',
@@ -57,11 +59,16 @@ export const site = {
     works: [
         {
             title: 'Berserk Chess Engine',
-            stack: ['devicon-c-plain', 'devicon-gcc-plain'],
+            stack: [
+                { icon: 'devicon-c-plain', label: 'C' },
+                { icon: 'devicon-gcc-plain', label: 'GCC' },
+            ],
             image: {
                 src: '/images/works/berserk.webp',
                 avif: '/images/works/berserk.avif',
                 placeholder: '/images/works/berserk-placeholder.webp',
+                width: 640,
+                height: 340,
             },
             description:
                 'UCI-compliant chess engine written in C. Utilizes an optimized minimax search with a self-trained neural network for position evaluation.',
@@ -69,11 +76,17 @@ export const site = {
         },
         {
             title: 'Live Chess Viewer',
-            stack: ['devicon-typescript-plain', 'devicon-express-original', 'devicon-nodejs-plain'],
+            stack: [
+                { icon: 'devicon-typescript-plain', label: 'TypeScript' },
+                { icon: 'devicon-express-original', label: 'Express' },
+                { icon: 'devicon-nodejs-plain', label: 'Node.js' },
+            ],
             image: {
                 src: '/images/works/tlcv.webp',
                 avif: '/images/works/tlcv.avif',
                 placeholder: '/images/works/tlcv-placeholder.webp',
+                width: 640,
+                height: 408,
             },
             description:
                 "Web viewer service for Tom's live chess server broadcasts. Officially used by CCRL to broadcast chess events.",
@@ -81,11 +94,16 @@ export const site = {
         },
         {
             title: 'Torch Chess Engine',
-            stack: ['devicon-cplusplus-plain', 'devicon-gcc-plain'],
+            stack: [
+                { icon: 'devicon-cplusplus-plain', label: 'C++' },
+                { icon: 'devicon-gcc-plain', label: 'GCC' },
+            ],
             image: {
                 src: '/images/works/torch.webp',
                 avif: '/images/works/torch.avif',
                 placeholder: '/images/works/torch-placeholder.webp',
+                width: 640,
+                height: 359,
             },
             description:
                 'UCI-compliant chess engine written in C++. Collaborated with leading chess developers to build one of the strongest engines to date.',
@@ -93,22 +111,33 @@ export const site = {
         },
         {
             title: 'FN Dash',
-            stack: ['devicon-python-plain', 'devicon-react-original', 'devicon-postgresql-plain'],
+            stack: [
+                { icon: 'devicon-python-plain', label: 'Python' },
+                { icon: 'devicon-react-original', label: 'React' },
+                { icon: 'devicon-postgresql-plain', label: 'PostgreSQL' },
+            ],
             image: {
                 src: '/images/works/fndash.webp',
                 avif: '/images/works/fndash.avif',
                 placeholder: '/images/works/fndash-placeholder.webp',
+                width: 640,
+                height: 403,
             },
             description: 'Fortnite statistics tracking website. Automated data collection upon user registration.',
             href: 'https://github.com/jhonnold/fndash',
         },
         {
             title: 'react-chartjs-2',
-            stack: ['devicon-react-original', 'devicon-npm-original-wordmark'],
+            stack: [
+                { icon: 'devicon-react-original', label: 'React' },
+                { icon: 'devicon-npm-original-wordmark', label: 'npm' },
+            ],
             image: {
                 src: '/images/works/chartjs.webp',
                 avif: '/images/works/chartjs.avif',
                 placeholder: '/images/works/chartjs-placeholder.webp',
+                width: 640,
+                height: 397,
             },
             description:
                 'React wrapper for the popular Chart.js library. Significant contributor to the open-source project during its React modernization.',

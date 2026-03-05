@@ -1,6 +1,7 @@
 export function initAnimations() {
+    const container = document.querySelector('[data-scroll-container]');
     const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length === 0) return;
+    if (!container || reveals.length === 0) return;
 
     const observer = new IntersectionObserver(
         entries => {
@@ -11,7 +12,7 @@ export function initAnimations() {
                 }
             }
         },
-        { threshold: 0.15 },
+        { root: container, threshold: 0.1 },
     );
 
     reveals.forEach(el => observer.observe(el));

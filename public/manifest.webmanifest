@@ -1,6 +1,6 @@
 {
     "name": "honnold.me",
-    "short_name": "starter",
+    "short_name": "Jay Honnold",
     "start_url": "/",
     "background_color": "#fafafa",
     "theme_color": "#011c27",
@@ -8,7 +8,7 @@
     "icons": [
         {
             "src": "/images/icon.webp",
-            "sizes": "512x512",
+            "sizes": "172x172",
             "type": "image/webp"
         }
     ]
