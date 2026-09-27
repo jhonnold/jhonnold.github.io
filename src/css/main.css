@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Dusk Terminal design tokens (see design/tokens.css) */
+/* Dusk Terminal design tokens */
 @theme {
     /* interface */
     --color-navy: #011c27; /* hero sky top, nav, text on amber */

@@ -17,6 +17,10 @@ export function initMenu() {
     menu.addEventListener('click', e => {
         if (e.target.closest('a')) setOpen(false);
     });
+    // The menu is md:hidden; close it when the viewport grows so the nav doesn't keep its open state.
+    window.matchMedia('(min-width: 48rem)').addEventListener('change', e => {
+        if (e.matches) setOpen(false);
+    });
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
             setOpen(false);

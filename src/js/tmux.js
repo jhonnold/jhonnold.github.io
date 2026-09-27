@@ -6,16 +6,30 @@ export function initTmux() {
         .filter(Boolean);
     if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver(
-        entries => {
-            for (const entry of entries) {
-                if (!entry.isIntersecting) continue;
-                const href = `#${entry.target.id}`;
-                links.forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === href));
-            }
-        },
-        { rootMargin: '-33% 0px -66% 0px' },
-    );
+    let queued = false;
 
-    sections.forEach(section => observer.observe(section));
+    function update() {
+        queued = false;
+        const line = window.innerHeight / 3;
+        // The last section can be too short to reach the line, so the page bottom selects it.
+        const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
+        const active = atEnd
+            ? sections.at(-1)
+            : (sections.findLast(s => s.getBoundingClientRect().top <= line) ?? sections[0]);
+        const href = `#${active.id}`;
+        for (const a of links) {
+            if (a.getAttribute('href') === href) a.setAttribute('aria-current', 'location');
+            else a.removeAttribute('aria-current');
+        }
+    }
+
+    function queue() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    update();
 }
