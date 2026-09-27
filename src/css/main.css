@@ -239,25 +239,43 @@ a.card:hover .card-action,
     color: var(--color-amber-hover);
 }
 
-/* Featured cards span two columns; at lg the media sits left of the header and body. */
+/* Featured cards span two columns. A featured text panel sits left of the header and body at lg;
+   a featured screenshot stays on top as a banner. */
 .card-featured {
     @variant sm {
         grid-column: span 2 / span 2;
     }
+}
+.card-featured:has(> pre) {
     @variant lg {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: auto 1fr;
     }
 }
-.card-media {
+.card-featured:has(> pre) > :not(pre) {
+    @variant lg {
+        grid-column: 2;
+    }
+}
+
+/* Screenshots are about 16:10, so their frame matches; text panels have a fixed height. */
+picture.card-media {
+    aspect-ratio: 16 / 10;
+}
+.card-featured picture.card-media {
+    @variant sm {
+        aspect-ratio: 12 / 5;
+    }
+}
+pre.card-media {
     height: 170px;
 
     @variant sm {
         height: 180px;
     }
 }
-.card-featured .card-media {
+.card-featured pre.card-media {
     height: 200px;
 
     @variant sm {
