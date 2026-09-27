@@ -1,9 +1,11 @@
 import '../css/fonts.css';
 import '../css/main.css';
-import { initScrollNav } from './scroll.js';
-import { initAnimations } from './animations.js';
+import { initParallax } from './parallax.js';
+import { initTmux } from './tmux.js';
+import { initMenu } from './menu.js';
 import { initBlurUp } from './blur-up.js';
 
-initScrollNav();
-initAnimations();
+initParallax();
+initTmux();
+initMenu();
 initBlurUp();
