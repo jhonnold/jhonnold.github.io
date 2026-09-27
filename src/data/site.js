@@ -1,6 +1,6 @@
 const links = {
     github: 'https://github.com/jhonnold',
-    linkedin: 'https://www.linkedin.com/in/jay-honnold-123275140/',
+    linkedin: 'https://www.linkedin.com/in/jay-honnold-158b553a9/',
 };
 
 const role = 'Senior Software Engineer';
