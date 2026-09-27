@@ -34,17 +34,16 @@
 
     --nav-h: 60px;
     --tmux-h: 28px;
-}
+    --commit-gap: 32px; /* experience list gap; the git line spans it */
 
-@media (min-width: 48rem) {
-    :root {
+    @variant sm {
+        --tmux-h: 32px;
+    }
+    @variant md {
         --nav-h: 72px;
     }
-}
-
-@media (min-width: 40rem) {
-    :root {
-        --tmux-h: 32px;
+    @variant lg {
+        --commit-gap: 44px;
     }
 }
 
@@ -68,11 +67,11 @@
 /* Nav: transparent over the hero, fills as you scroll */
 .site-nav {
     height: var(--nav-h);
-    background: rgba(1, 28, 39, var(--nav-bg));
-    border-bottom: 1px solid rgba(28, 58, 71, var(--nav-line));
+    background: color-mix(in srgb, var(--color-navy) calc(min(var(--nav-bg), 0.94) * 100%), transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-line) calc(var(--nav-line) * 100%), transparent);
 }
 .site-nav[data-open] {
-    background: rgba(1, 28, 39, 0.94);
+    background: color-mix(in srgb, var(--color-navy) 94%, transparent);
 }
 .nav-link[aria-current] {
     color: var(--color-amber);
@@ -99,7 +98,6 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    will-change: transform;
 }
 .hero-copy {
     transform: translateY(var(--copy-y));
@@ -123,10 +121,8 @@
     padding: 0 18px;
     font-size: 14px;
     transition: background-color 150ms;
-}
-@media (min-width: 40rem) {
-    .btn-primary,
-    .btn-secondary {
+
+    @variant sm {
         height: 52px;
         padding: 0 24px;
         font-size: 15px;
@@ -153,9 +149,8 @@
 .chip {
     padding: 3px 7px;
     border: 1px solid var(--color-line);
-}
-@media (min-width: 40rem) {
-    .chip {
+
+    @variant sm {
         padding: 4px 8px;
     }
 }
@@ -170,6 +165,12 @@
     border-radius: 50%;
     border: 2px solid var(--color-amber);
     background: var(--color-ink);
+
+    @variant lg {
+        top: 4px;
+        width: 14px;
+        height: 14px;
+    }
 }
 .git-dot-current {
     background: var(--color-amber);
@@ -178,20 +179,13 @@
     position: absolute;
     left: 5px;
     top: 19px;
-    bottom: -36px;
+    bottom: calc(-4px - var(--commit-gap)); /* reach the next dot */
     width: 2px;
     background: var(--color-line);
-}
-@media (min-width: 64rem) {
-    .git-dot {
-        top: 4px;
-        width: 14px;
-        height: 14px;
-    }
-    .git-line {
+
+    @variant lg {
         left: 6px;
         top: 22px;
-        bottom: -48px;
     }
 }
 
@@ -245,6 +239,38 @@ a.card:hover .card-action,
     color: var(--color-amber-hover);
 }
 
+/* Featured cards span two columns; at lg the media sits left of the header and body. */
+.card-featured {
+    @variant sm {
+        grid-column: span 2 / span 2;
+    }
+    @variant lg {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto 1fr;
+    }
+}
+.card-media {
+    height: 170px;
+
+    @variant sm {
+        height: 180px;
+    }
+}
+.card-featured .card-media {
+    height: 200px;
+
+    @variant sm {
+        height: 280px;
+    }
+    @variant lg {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        height: 100%;
+        min-height: 400px;
+    }
+}
+
 /* tmux status bar */
 .tmux {
     height: var(--tmux-h);
@@ -258,11 +284,8 @@ a.card:hover .card-action,
     outline-color: var(--color-navy);
     outline-offset: 1px;
 }
-.tmux-star {
-    display: none;
-}
-.tmux a[aria-current] .tmux-star {
-    display: inline;
+.tmux a[aria-current]::after {
+    content: '*';
 }
 
 /* Blur-up images */

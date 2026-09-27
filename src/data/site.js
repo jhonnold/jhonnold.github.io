@@ -27,11 +27,11 @@ export const site = {
         { label: '~/contact', href: '#contact' },
     ],
     tmux: [
-        { label: '0:hero', short: '0:hero', href: '#top' },
-        { label: '1:about', short: '1:about', href: '#about' },
+        { label: '0:hero', href: '#top' },
+        { label: '1:about', href: '#about' },
         { label: '2:experience', short: '2:exp', href: '#experience' },
-        { label: '3:works', short: '3:works', href: '#works' },
-        { label: '4:contact', short: '4:contact', href: '#contact' },
+        { label: '3:works', href: '#works' },
+        { label: '4:contact', href: '#contact' },
     ],
     hero: {
         name: 'Jay Honnold',
@@ -44,89 +44,24 @@ export const site = {
             "I'm a senior software engineer at Cognite, where I work on the platform behind Atlas AI: the agentic loop, model integrations, and the tools the agents call. Before that I spent five years at Amazon and AWS, mostly turning manual processes into automated systems. At AWS that work saved more than 50 developer-years.",
             "At home I run a three-node Proxmox cluster the way I'd run production: configs in git with CI, monitoring, and encrypted offsite backups. It also hosts my local LLM stack, where I work on model serving, tracing, and agent memory on an RTX 4090. In my spare time I write Berserk, an open-source chess engine in C that ranks among the strongest in the world.",
         ],
-        // Each line is a list of [kind, text] tokens; kind is '', 'kw', 'str' or 'comment'.
+        // Code panel lines; the template colors `export const`, "strings" and // comments.
         code: {
             desktop: [
-                [
-                    ['kw', 'export const'],
-                    ['', ' jay = {'],
-                ],
-                [
-                    ['', '  role: '],
-                    ['str', '"Senior Software Engineer"'],
-                    ['', ','],
-                ],
-                [
-                    ['', '  focus: ['],
-                    ['str', '"AI agents"'],
-                    ['', ', '],
-                    ['str', '"LLM platforms"'],
-                    ['', ', '],
-                    ['str', '"system design"'],
-                    ['', '],'],
-                ],
-                [
-                    ['', '  languages: ['],
-                    ['str', '"TypeScript"'],
-                    ['', ', '],
-                    ['str', '"Java"'],
-                    ['', ', '],
-                    ['str', '"Kotlin"'],
-                    ['', ', '],
-                    ['str', '"Go"'],
-                    ['', ', '],
-                    ['str', '"Python"'],
-                    ['', ', '],
-                    ['str', '"C"'],
-                    ['', ', '],
-                    ['str', '"C++"'],
-                    ['', '],'],
-                ],
-                [
-                    ['', '  basedIn: '],
-                    ['str', '"Phoenix, AZ"'],
-                    ['', ',  '],
-                    ['comment', '// saguaro country'],
-                ],
-                [
-                    ['', '  offHours: ['],
-                    ['str', '"homelab"'],
-                    ['', ', '],
-                    ['str', '"local LLMs"'],
-                    ['', ', '],
-                    ['str', '"Berserk"'],
-                    ['', '],'],
-                ],
-                [['', '};']],
+                'export const jay = {',
+                '  role: "Senior Software Engineer",',
+                '  focus: ["AI agents", "LLM platforms", "system design"],',
+                '  languages: ["TypeScript", "Java", "Kotlin", "Go", "Python", "C", "C++"],',
+                '  basedIn: "Phoenix, AZ",  // saguaro country',
+                '  offHours: ["homelab", "local LLMs", "Berserk"],',
+                '};',
             ],
             mobile: [
-                [
-                    ['kw', 'export const'],
-                    ['', ' jay = {'],
-                ],
-                [
-                    ['', '  role: '],
-                    ['str', '"Senior SWE"'],
-                    ['', ','],
-                ],
-                [
-                    ['', '  focus: ['],
-                    ['str', '"AI agents"'],
-                    ['', ', '],
-                    ['str', '"LLMs"'],
-                    ['', '],'],
-                ],
-                [
-                    ['', '  basedIn: '],
-                    ['str', '"Phoenix, AZ"'],
-                    ['', ','],
-                ],
-                [
-                    ['', '  offHours: '],
-                    ['str', '"homelab"'],
-                    ['', ','],
-                ],
-                [['', '};']],
+                'export const jay = {',
+                '  role: "Senior SWE",',
+                '  focus: ["AI agents", "LLMs"],',
+                '  basedIn: "Phoenix, AZ",',
+                '  offHours: "homelab",',
+                '};',
             ],
         },
         image: {
@@ -142,14 +77,12 @@ export const site = {
     experience: [
         {
             hash: '9e1c0af',
-            current: true,
             role,
             company,
             start: 'Mar 2026',
             end: 'present',
             summary:
                 "Working on the harness and platform behind Atlas AI, Cognite's low-code workbench for industrial AI agents. That covers the agentic loop, model integrations across Azure, AWS, and Google Cloud, Cognite Data Fusion (CDF) tools and the CDF MCP server, and services that back agent tools, such as a sandbox. Plus a little frontend work.",
-            stats: [],
             tags: ['LLMs', 'MCP', 'Azure', 'AWS', 'Google Cloud'],
         },
         {
@@ -162,8 +95,6 @@ export const site = {
                 'Led internal automation for AWS global and regional expansion: validation services, code templates for expansion readiness, and scripts that use AI to refactor code for new regions.',
             stats: ['+1,300 pipelines supported', '+50 developer-years saved'],
             tags: ['Java', 'Kotlin', 'TypeScript', 'Ruby', 'Go', 'Python'],
-            details:
-                'Designed and implemented internal automation tools to support AWS teams in global and regional expansion initiatives. Built solutions to streamline 3 common manual processes, developed validation services for testing automation reliability, created code templates to ensure expansion readiness, and implemented AI-driven scripts to automate the code refactoring necessary to achieve expansion automation. Leveraged Java, Kotlin, Typescript, Ruby, Golang, and Python with AWS infrastructure to deploy solutions that supported over 1300 pipelines and saved over 50 developer years of effort.',
         },
         {
             hash: '7be20d4',
@@ -173,10 +104,7 @@ export const site = {
             end: 'Apr 2022',
             summary:
                 'Built and maintained order ingestion for Multi-Channel Fulfillment, handling thousands of orders a day. Also modernized legacy components and worked on the initial move to native AWS.',
-            stats: [],
             tags: ['Java', 'Kotlin', 'AWS'],
-            details:
-                'Developed and maintained a scalable order ingestion system for Multi-Channel Fulfillment, supporting thousands of orders daily. Worked on the modernization of legacy components, the initial migration to native AWS infrastructure, and resolved operational issues. Built and deployed solutions using Java and Kotlin on AWS infrastructure.',
         },
         {
             hash: '3c91e02',
@@ -188,8 +116,6 @@ export const site = {
                 'Worked on a risk-assessment platform that checks 100+ components a day for production readiness. Led the split of its monolithic API into six microservices and rebuilt the UI to meet accessibility standards.',
             stats: ['+100 components assessed / day', '1 monolith → 6 services'],
             tags: ['React', 'Java', 'Spring', 'Node.js', 'MSSQL'],
-            details:
-                'Worked on the development of an internal risk assessment platform that automatically evaluates application artifacts against security and compliance standards, assessing over 100 components daily to determine production deployment readiness. Led the refactoring of a monolithic API into 6 independent microservices, improving system maintainability and enabling independent deployment cycles. Redesigned and rebuilt the UI to comply with accessibility standards, enhancing data visualization and user experience. Engineered the full solution using React, JavaScript, Java, Spring, Node.js, Express, and MSSQL.',
         },
         {
             hash: '0d4a7b1',
@@ -199,13 +125,9 @@ export const site = {
             end: 'Aug 2018',
             summary:
                 'Built Victor, an Android app for veterans, and the Coder Platform, a web app that connects non-technical clients with developers.',
-            stats: [],
             tags: ['React Native', 'React', 'Rails', 'PostgreSQL'],
-            details:
-                'Developed the Android application Victor, a mobile tool for veterans. Built the "Coder Platform" web application that streamlines collaboration between non-technical users and developers, enhancing project intake efficiency. Architected a new version of the "Coder Platform" with a scalable backend and optimized database design. Engineered all solutions using React Native, React, Ruby on Rails, Express, Node.js, and PostgreSQL.',
         },
     ],
-    experienceMeta: '5 commits · 2017 → now',
     works: [
         {
             slug: 'homelab',
@@ -321,7 +243,6 @@ export const site = {
             slug: 'fndash',
             title: 'FN Dash',
             description: 'Fortnite statistics tracker with automated data collection.',
-            bullets: [],
             tags: ['Python', 'React', 'Postgres'],
             action: 'github',
             href: 'https://github.com/jhonnold/fndash',

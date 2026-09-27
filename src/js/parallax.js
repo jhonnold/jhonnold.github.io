@@ -6,7 +6,7 @@ export function initParallax() {
     const hero = document.getElementById('top');
     if (!hero) return;
 
-    const root = document.documentElement;
+    const nav = document.querySelector('[data-nav]');
     const wide = window.matchMedia('(min-width: 40rem)');
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
     let layers = [];
@@ -22,12 +22,13 @@ export function initParallax() {
         queued = false;
         const y = window.scrollY;
         const heroHeight = hero.offsetHeight;
-        root.style.setProperty('--nav-bg', Math.min(0.94, y / tune.nav));
-        root.style.setProperty('--nav-line', Math.min(1, Math.max(0, (y - heroHeight + 200) / 200)));
+        // Scoped to the nav and hero so each frame restyles only those subtrees, not the whole page.
+        nav?.style.setProperty('--nav-bg', Math.min(1, y / tune.nav));
+        nav?.style.setProperty('--nav-line', Math.min(1, Math.max(0, (y - heroHeight + 200) / 200)));
         if (calm.matches || y > heroHeight) return;
         for (const el of layers) el.style.transform = `translate3d(0, ${y * el.dataset.speed}px, 0)`;
-        root.style.setProperty('--copy-y', `${y * tune.copy}px`);
-        root.style.setProperty('--fade', Math.max(0, 1 - y / tune.fade));
+        hero.style.setProperty('--copy-y', `${y * tune.copy}px`);
+        hero.style.setProperty('--fade', Math.max(0, 1 - y / tune.fade));
     }
 
     function queue() {
