@@ -15,178 +15,795 @@
         <meta name="twitter:title" content="<%= site.meta.title %>" />
         <meta name="twitter:description" content="<%= site.meta.description %>" />
         <meta name="twitter:image" content="<%= site.meta.ogImage %>" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css"
-            integrity="sha384-6iv3tXABd3c9DYulXujJl8n22ahn/12f45MomxoPv6jBX4LBE4gNJjfkx5mAKIqR"
-            crossorigin="anonymous"
-        />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#011c27" />
-        <link rel="icon" href="/images/icon.webp" type="image/webp" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     </head>
-    <body class="bg-navy">
-        <!-- Navigation dots -->
-        <nav class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4" aria-label="Section navigation">
-            <% site.nav.forEach(function(label, i) { %>
-            <div class="nav-item">
-                <span class="nav-tooltip"><%= label %></span>
-                <button
-                    class="nav-dot"
-                    data-nav-dot="<%= i %>"
-                    aria-label="Go to <%= label %>"
-                    aria-pressed="false"
-                ></button>
+    <body>
+        <!-- Nav -->
+        <nav
+            class="site-nav sticky top-0 z-20 flex items-center justify-between pl-5 pr-3 sm:px-12 lg:px-24"
+            aria-label="Primary"
+            data-nav
+        >
+            <a href="#top" class="flex items-center gap-0.5 text-sm md:text-[15px]">
+                <span class="text-amber">jay@honnold.me</span><span class="text-muted">:~$</span>
+                <span class="cursor ml-1.5 inline-block h-4 w-2 bg-amber md:ml-2 md:h-[18px] md:w-[9px]"></span>
+            </a>
+            <div class="hidden items-center gap-8 text-sm md:flex">
+                <% site.nav.forEach(function(n) { %>
+                <a href="<%= n.href %>" class="nav-link text-text-3 hover:text-amber" data-nav-link><%= n.label %></a>
+                <% }); %>
             </div>
-            <% }); %>
+            <button
+                type="button"
+                class="flex size-11 items-center justify-center border border-line text-text md:hidden"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="menu"
+                data-menu-button
+            >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                >
+                    <path d="M4 7h16M4 12h16M4 17h10" />
+                </svg>
+            </button>
+            <div
+                id="menu"
+                class="absolute inset-x-0 top-full hidden flex-col border-y border-line bg-navy md:hidden"
+                data-menu
+            >
+                <% site.nav.forEach(function(n) { %>
+                <a
+                    href="<%= n.href %>"
+                    class="nav-link flex min-h-12 items-center px-5 text-[15px] text-text-3 hover:text-amber"
+                    data-nav-link
+                    ><%= n.label %></a
+                >
+                <% }); %>
+            </div>
         </nav>
 
-        <!-- Scroll container -->
-        <main
-            class="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
-            data-scroll-container
-            tabindex="0"
-        >
+        <main>
             <!-- Hero -->
-            <section class="h-screen snap-start bg-navy text-white flex items-center" data-section="0">
-                <div class="flex flex-col justify-center items-center w-full">
-                    <h1 class="text-4xl md:text-6xl my-4 font-mono reveal">
-                        <span class="text-gold">Hello,</span>
-                        <span> World!</span>
+            <section id="top" class="hero relative h-[760px] overflow-hidden bg-navy sm:h-[900px]" aria-label="Intro">
+                <div class="absolute inset-0 hidden overflow-hidden sm:block" data-scene="desktop">
+                    <svg
+                        class="layer"
+                        data-speed="0.85"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <rect class="fill-navy" x="0" y="-400" width="1440" height="730" />
+                        <rect x="0" y="330" width="1440" height="110" fill="#0f2340" />
+                        <rect x="0" y="440" width="1440" height="80" fill="#262448" />
+                        <rect x="0" y="520" width="1440" height="60" fill="#46284a" />
+                        <rect x="0" y="580" width="1440" height="50" fill="#71304a" />
+                        <rect x="0" y="630" width="1440" height="44" fill="#a6423f" />
+                        <rect x="0" y="674" width="1440" height="36" fill="#d4633a" />
+                        <rect x="0" y="710" width="1440" height="190" fill="#f08f2e" />
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.8"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <g class="fill-text">
+                            <circle cx="120" cy="140" r="1.6" />
+                            <circle cx="410" cy="190" r="1.4" />
+                            <circle cx="540" cy="262" r="1.1" />
+                            <circle cx="610" cy="110" r="1.1" />
+                            <circle cx="720" cy="58" r="1.8" />
+                            <circle cx="860" cy="172" r="1.2" />
+                            <circle cx="940" cy="250" r="1" />
+                            <circle cx="1180" cy="236" r="1.1" />
+                            <circle cx="1210" cy="112" r="1.7" />
+                            <circle cx="1340" cy="60" r="1.2" />
+                            <circle cx="1392" cy="244" r="1.3" />
+                            <circle cx="60" cy="304" r="1.2" />
+                            <circle cx="820" cy="292" r="1" />
+                            <circle cx="1270" cy="310" r="1" />
+                            <circle cx="488" cy="42" r="1.3" />
+                            <circle cx="190" cy="236" r="1" />
+                            <circle cx="660" cy="206" r="0.9" />
+                            <circle cx="1110" cy="300" r="0.9" />
+                        </g>
+                        <!-- a knight's move -->
+                        <path
+                            class="stroke-muted"
+                            d="M1040 84 V164 H1080"
+                            stroke-width="1"
+                            opacity="0.45"
+                            fill="none"
+                        />
+                        <g class="fill-text">
+                            <circle cx="1040" cy="84" r="2" />
+                            <circle cx="1040" cy="124" r="1.3" />
+                            <circle cx="1040" cy="164" r="1.6" />
+                            <circle cx="1080" cy="164" r="2.2" />
+                        </g>
+                        <circle class="fill-moon" cx="292" cy="112" r="22" />
+                        <circle class="fill-navy" cx="302" cy="104" r="20" />
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.7"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <circle class="fill-amber" cx="980" cy="700" r="96" />
+                        <g stroke="#e4722f" fill="none">
+                            <line x1="870" y1="664" x2="1090" y2="664" stroke-width="3" />
+                            <line x1="870" y1="680" x2="1090" y2="680" stroke-width="5" />
+                            <line x1="870" y1="698" x2="1090" y2="698" stroke-width="7" />
+                        </g>
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.6"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill="#5a2a44"
+                            d="M0 960 V700 L80 700 L96 682 L214 682 L232 702 L360 704 L378 664 L398 652 L560 652 L578 672 L604 706 L760 710 L900 710 L920 692 L942 676 L1112 676 L1132 702 L1300 704 L1320 688 L1440 688 V960 Z"
+                        />
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.42"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill="#9a3a2b"
+                            d="M0 960 V784 L140 784 L160 762 L176 700 L186 566 L196 544 L214 544 L222 566 L232 702 L252 764 L300 778 L520 788 L700 792 L880 788 L1100 782 L1150 762 L1170 700 L1180 546 L1200 524 L1330 518 L1350 534 L1360 604 L1372 702 L1402 752 L1440 762 V960 Z"
+                        />
+                        <path fill="#c4603a" d="M1200 524 L1330 518 L1346 532 L1194 540 Z" />
+                        <path fill="#c4603a" d="M196 544 L214 544 L220 560 L191 560 Z" />
+                        <path
+                            fill="#7a2c25"
+                            d="M1350 534 L1360 604 L1372 702 L1402 752 L1440 762 V800 L1380 800 L1356 700 L1344 540 Z"
+                        />
+                        <g stroke="#7a2c25" stroke-width="3" fill="none">
+                            <line x1="1184" y1="596" x2="1350" y2="592" />
+                            <line x1="1178" y1="640" x2="1356" y2="636" />
+                            <line x1="1174" y1="690" x2="1362" y2="686" />
+                            <line x1="182" y1="620" x2="226" y2="620" />
+                            <line x1="178" y1="680" x2="230" y2="680" />
+                        </g>
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.24"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path fill="#3a1c2c" d="M0 960 V812 Q360 792 720 806 T1440 800 V960 Z" />
+                        <g
+                            fill="none"
+                            stroke="#3a1c2c"
+                            stroke-width="11"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M430 806 V730" />
+                            <path d="M640 804 V748" />
+                            <path d="M905 806 V716" />
+                            <path d="M1030 804 V760" />
+                            <path d="M560 806 V774" />
+                        </g>
+                        <g fill="none" stroke="#3a1c2c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M430 770 H418 Q412 770 412 764 V748" />
+                            <path d="M430 758 H442 Q448 758 448 752 V738" />
+                            <path d="M640 780 H652 Q658 780 658 774 V760" />
+                            <path d="M905 762 H891 Q885 762 885 756 V736" />
+                            <path d="M905 748 H919 Q925 748 925 742 V724" />
+                        </g>
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.06"
+                        viewBox="0 0 1440 900"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path class="fill-ink" d="M0 960 V852 Q300 832 600 856 T1200 850 T1440 846 V960 Z" />
+                        <g
+                            transform="translate(-5 0)"
+                            fill="none"
+                            stroke="#e07a3a"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke-width="34" d="M1262 866 V470" />
+                            <path stroke-width="26" d="M1262 708 H1226 Q1206 708 1206 688 V596" />
+                            <path stroke-width="26" d="M1262 640 H1302 Q1320 640 1320 620 V540" />
+                            <path stroke-width="22" d="M1262 780 H1296 Q1310 780 1310 766 V726" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke-width="34" d="M1262 866 V470" />
+                            <path stroke-width="26" d="M1262 708 H1226 Q1206 708 1206 688 V596" />
+                            <path stroke-width="26" d="M1262 640 H1302 Q1320 640 1320 620 V540" />
+                            <path stroke-width="22" d="M1262 780 H1296 Q1310 780 1310 766 V726" />
+                        </g>
+                        <g
+                            transform="translate(5 0)"
+                            fill="none"
+                            stroke="#e07a3a"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke-width="30" d="M118 864 V612" />
+                            <path stroke-width="22" d="M118 730 H148 Q164 730 164 714 V664" />
+                            <path stroke-width="20" d="M118 780 H92 Q80 780 80 768 V728" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke-width="30" d="M118 864 V612" />
+                            <path stroke-width="22" d="M118 730 H148 Q164 730 164 714 V664" />
+                            <path stroke-width="20" d="M118 780 H92 Q80 780 80 768 V728" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-width="4" stroke-linecap="round">
+                            <path d="M332 858 Q318 780 300 720" />
+                            <path d="M336 858 Q336 770 344 700" />
+                            <path d="M340 858 Q360 790 382 736" />
+                            <path d="M334 858 Q300 800 276 770" />
+                            <path d="M338 858 Q352 812 364 790" />
+                        </g>
+                        <g class="fill-ink">
+                            <ellipse cx="1082" cy="838" rx="18" ry="24" />
+                            <ellipse cx="1104" cy="814" rx="13" ry="18" transform="rotate(24 1104 814)" />
+                            <ellipse cx="1062" cy="818" rx="12" ry="16" transform="rotate(-20 1062 818)" />
+                            <path d="M500 858 Q516 836 540 840 Q562 844 570 858 Z" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="absolute inset-0 overflow-hidden sm:hidden" data-scene="mobile">
+                    <svg
+                        class="layer"
+                        data-speed="0.51"
+                        viewBox="0 0 390 760"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <rect class="fill-navy" x="0" y="-300" width="390" height="640" />
+                        <rect x="0" y="340" width="390" height="80" fill="#0f2340" />
+                        <rect x="0" y="420" width="390" height="60" fill="#262448" />
+                        <rect x="0" y="480" width="390" height="50" fill="#46284a" />
+                        <rect x="0" y="530" width="390" height="40" fill="#71304a" />
+                        <rect x="0" y="570" width="390" height="36" fill="#a6423f" />
+                        <rect x="0" y="606" width="390" height="30" fill="#d4633a" />
+                        <rect x="0" y="636" width="390" height="124" fill="#f08f2e" />
+                        <g class="fill-text">
+                            <circle cx="40" cy="96" r="1.2" />
+                            <circle cx="300" cy="80" r="1.5" />
+                            <circle cx="360" cy="180" r="1.1" />
+                            <circle cx="200" cy="44" r="1.3" />
+                            <circle cx="120" cy="300" r="1" />
+                            <circle cx="352" cy="290" r="1.1" />
+                            <circle cx="250" cy="250" r="0.9" />
+                        </g>
+                        <circle class="fill-moon" cx="330" cy="120" r="14" />
+                        <circle class="fill-navy" cx="336" cy="115" r="13" />
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.42"
+                        viewBox="0 0 390 760"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <circle class="fill-amber" cx="240" cy="630" r="64" />
+                        <g stroke="#e4722f" fill="none">
+                            <line x1="170" y1="606" x2="310" y2="606" stroke-width="3" />
+                            <line x1="170" y1="618" x2="310" y2="618" stroke-width="4" />
+                            <line x1="170" y1="632" x2="310" y2="632" stroke-width="6" />
+                        </g>
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.252"
+                        viewBox="0 0 390 760"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path fill="#5a2a44" d="M0 800 V632 L40 632 L52 620 L150 620 L162 634 L390 638 V800 Z" />
+                        <path
+                            fill="#9a3a2b"
+                            d="M390 800 V600 L380 580 L372 528 L360 510 L262 510 L250 528 L244 580 L232 630 L200 660 L0 690 V800 Z"
+                        />
+                        <path fill="#c4603a" d="M262 510 L360 510 L368 522 L256 524 Z" />
+                        <path
+                            fill="#7a2c25"
+                            d="M360 510 L372 528 L380 580 L390 600 V640 L378 640 L366 580 L356 522 Z"
+                        />
+                        <g stroke="#7a2c25" stroke-width="2.5" fill="none">
+                            <line x1="248" y1="556" x2="370" y2="556" />
+                            <line x1="240" y1="592" x2="376" y2="592" />
+                            <line x1="226" y1="628" x2="384" y2="628" />
+                        </g>
+                    </svg>
+                    <svg
+                        class="layer"
+                        data-speed="0.036"
+                        viewBox="0 0 390 760"
+                        preserveAspectRatio="xMidYMax slice"
+                        aria-hidden="true"
+                    >
+                        <path class="fill-ink" d="M0 800 V716 Q120 700 220 718 T390 712 V800 Z" />
+                        <g
+                            transform="translate(-4 0)"
+                            fill="none"
+                            stroke="#e07a3a"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke-width="24" d="M322 738 V510" />
+                            <path stroke-width="18" d="M322 640 H300 Q290 640 290 630 V586" />
+                            <path stroke-width="18" d="M322 600 H344 Q354 600 354 590 V548" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke-width="24" d="M322 738 V510" />
+                            <path stroke-width="18" d="M322 640 H300 Q290 640 290 630 V586" />
+                            <path stroke-width="18" d="M322 600 H344 Q354 600 354 590 V548" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke-width="14" d="M44 736 V610" />
+                            <path stroke-width="10" d="M44 680 H58 Q64 680 64 674 V652" />
+                        </g>
+                        <g class="stroke-ink" fill="none" stroke-width="3" stroke-linecap="round">
+                            <path d="M150 730 Q142 690 130 660" />
+                            <path d="M153 730 Q154 684 160 650" />
+                            <path d="M156 730 Q170 696 182 672" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div
+                    class="hero-copy absolute inset-x-6 top-[100px] flex flex-col gap-4 sm:inset-x-12 sm:top-[160px] sm:gap-[22px] lg:left-24 lg:right-auto lg:top-[176px] lg:w-[860px]"
+                >
+                    <div class="prompt text-[15px] leading-normal text-muted sm:text-lg sm:leading-normal">whoami</div>
+                    <h1
+                        class="font-display text-[64px] leading-[0.92] font-extrabold tracking-[-2px] text-text sm:text-[96px] sm:tracking-[-3px] lg:text-[128px] lg:tracking-[-3.5px]"
+                    >
+                        <span class="block sm:inline"><%= site.hero.name.split(' ')[0] %></span>
+                        <span><%= site.hero.name.split(' ').slice(1).join(' ') %></span>
                     </h1>
-                    <div class="w-full">
-                        <div class="container mx-auto px-8 flex justify-center">
-                            <img
-                                src="/images/table-contents.svg"
-                                alt="Developer table"
-                                width="836"
-                                height="339"
-                                class="min-w-[512px] h-48 md:h-auto reveal"
-                            />
-                        </div>
+                    <p
+                        class="max-w-[620px] font-display text-lg leading-[1.45] text-text-3 sm:text-[22px] sm:leading-normal"
+                    >
+                        <%= site.hero.lede %>
+                    </p>
+                    <div
+                        class="flex flex-col gap-1 text-[13px] text-text-2 sm:flex-row sm:items-center sm:gap-6 sm:text-sm"
+                    >
+                        <span class="flex items-center gap-2 sm:gap-2.5">
+                            <span class="inline-block size-2 rounded-full bg-cactus" aria-hidden="true"></span>
+                            <%= site.hero.status %>
+                        </span>
+                        <span class="text-muted"
+                            >// <%= site.location.city %><span class="hidden sm:inline">
+                                · <%= site.location.coords %></span
+                            ></span
+                        >
                     </div>
-                    <hr class="w-full -m-px border-2 border-white" />
+                    <div class="mt-1 flex gap-3 sm:mt-3 sm:gap-4">
+                        <a href="#works" class="btn-primary">cd ~/works</a>
+                        <a href="#about" class="btn-secondary">cat about.md</a>
+                    </div>
+                </div>
+                <div
+                    class="hero-hint absolute inset-x-0 bottom-[52px] hidden justify-center text-[13px] text-muted sm:flex"
+                    aria-hidden="true"
+                >
+                    scroll ↓
                 </div>
             </section>
 
             <!-- About -->
-            <section class="min-h-screen snap-start bg-white text-navy flex items-center" data-section="1">
-                <div
-                    class="flex flex-col md:flex-row justify-center items-center container mx-auto p-8 text-center md:text-left"
-                >
-                    <div class="md:mr-16 order-2 md:order-1 reveal">
-                        <h2 class="text-3xl md:text-4xl my-4"><%= site.about.heading %></h2>
-                        <p class="font-light mb-2"><%= site.about.text %></p>
-                        <p class="font-light mb-4"><%= site.about.specific %></p>
-                        <ul class="flex text-3xl justify-center md:justify-start">
-                            <li class="mr-4">
-                                <a
-                                    href="<%= site.about.links.github %>"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="GitHub profile"
-                                >
-                                    <i class="devicon-github-plain"></i>
-                                </a>
-                            </li>
-                        </ul>
+            <section
+                id="about"
+                class="flex flex-col gap-5 px-6 py-16 sm:px-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-6 lg:gap-y-0 lg:px-24 lg:pt-28 lg:pb-24"
+            >
+                <div class="contents lg:col-span-7 lg:flex lg:flex-col lg:gap-6">
+                    <div class="prompt order-1 text-sm text-muted sm:text-base">cat about.md</div>
+                    <h2
+                        class="order-2 font-display text-[38px] leading-[1.02] font-bold tracking-[-1px] sm:text-5xl lg:text-6xl lg:leading-none lg:tracking-[-1.5px]"
+                    >
+                        <span class="lg:block"><%= site.about.headline[0] %></span>
+                        <span><%= site.about.headline[1] %></span>
+                    </h2>
+                    <% site.about.paragraphs.forEach(function(p) { %>
+                    <p
+                        class="order-3 font-display text-[17px] leading-[1.6] text-text-2 sm:text-[19px] sm:leading-[1.65]"
+                    >
+                        <%= p %>
+                    </p>
+                    <% }); %>
+                    <div class="order-5 mt-4 border border-line bg-panel lg:mt-2">
+                        <div
+                            class="flex h-8 items-center justify-between border-b border-line px-3.5 text-[11px] text-muted sm:h-9 sm:px-4 sm:text-xs"
+                        >
+                            <span>jay.ts</span><span class="hidden sm:inline">TypeScript</span>
+                        </div>
+                        <% ['mobile', 'desktop'].forEach(function(variant) { %>
+                        <pre
+                            class="<%= variant === 'mobile' ? 'sm:hidden p-3.5 text-[13px] leading-[1.7]' : 'hidden sm:block px-5 py-[18px] text-[15px] leading-[1.75]' %> overflow-x-auto font-mono text-text-3"
+                        ><code><% site.about.code[variant].forEach(function(line, i) { %><%= i ? '\n' : '' %><% line.split(/(export const|"[^"]*"|\/\/.*)/).forEach(function(part) { var cls = part === 'export const' ? 'text-amber' : part[0] === '"' ? 'text-sandstone' : part.startsWith('//') ? 'text-comment' : ''; %><% if (cls) { %><span class="<%= cls %>"><%= part %></span><% } else { %><%= part %><% } %><% }); %><% }); %></code></pre>
+                        <% }); %>
                     </div>
-                    <picture class="w-64 md:w-80 shrink-0 shadow-md order-1 md:order-2 reveal">
-                        <source srcset="<%= site.about.image.avif %>" type="image/avif" />
-                        <img
-                            src="<%= site.about.image.webp %>"
-                            alt="Jay Honnold Portrait"
-                            width="<%= site.about.image.width %>"
-                            height="<%= site.about.image.height %>"
-                            class="blur-up w-full"
-                            style="background: url('<%= site.about.image.placeholder %>') center/cover no-repeat"
-                            loading="lazy"
-                        />
-                    </picture>
+                </div>
+                <div class="contents lg:col-span-4 lg:col-start-9 lg:flex lg:flex-col lg:gap-7 lg:pt-11">
+                    <div class="relative order-4 mt-2 lg:mt-0">
+                        <picture>
+                            <source srcset="<%= site.about.image.avif %>" type="image/avif" />
+                            <img
+                                src="<%= site.about.image.webp %>"
+                                alt="<%= site.about.image.alt %>"
+                                width="<%= site.about.image.width %>"
+                                height="<%= site.about.image.height %>"
+                                class="blur-up block h-80 w-full object-cover object-[center_40%] sm:h-auto sm:aspect-[16/10] lg:aspect-auto lg:h-[520px]"
+                                style="background: url('<%= site.about.image.placeholder %>') center/cover no-repeat"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </picture>
+                        <div
+                            class="absolute -bottom-2.5 -left-2 bg-amber px-2.5 py-1.5 text-xs font-semibold text-navy lg:-bottom-3.5 lg:-left-3.5 lg:px-3 lg:py-2 lg:text-[13px]"
+                        >
+                            <%= site.about.image.tag %>
+                        </div>
+                    </div>
+                    <div class="order-6 flex gap-3 lg:mt-3">
+                        <a
+                            href="<%= site.links.github %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex h-12 grow items-center justify-center gap-2.5 border border-line bg-panel text-sm hover:bg-panel-hover"
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                                />
+                            </svg>
+                            github
+                        </a>
+                        <a
+                            href="<%= site.links.linkedin %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex h-12 grow items-center justify-center gap-2.5 border border-line bg-panel text-sm hover:bg-panel-hover"
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            linkedin
+                        </a>
+                    </div>
                 </div>
             </section>
 
             <!-- Experience -->
-            <section class="min-h-screen snap-start bg-navy text-white flex items-center" data-section="2">
-                <div class="flex flex-col justify-center items-center container mx-auto p-4">
-                    <h2 class="text-2xl reveal">Experience</h2>
-                    <% site.experience.forEach(function(e) { %>
-                    <article class="w-full my-8 reveal">
-                        <h3 class="flex flex-wrap items-center justify-between mb-2">
-                            <span class="w-full md:w-auto">
-                                <span class="text-gold text-lg"><%= e.title %></span> <%= e.company %>
-                            </span>
-                            <span class="text-base md:text-lg"> <%= e.start %> - <%= e.end %> </span>
-                        </h3>
-                        <p class="font-light"><%= e.details %></p>
-                    </article>
-                    <% }); %>
+            <section
+                id="experience"
+                class="flex flex-col gap-8 border-t border-line-soft px-6 py-16 sm:px-12 lg:gap-10 lg:px-24 lg:pt-24 lg:pb-[104px]"
+            >
+                <div class="flex items-baseline justify-between">
+                    <div class="flex flex-col gap-3 lg:gap-4">
+                        <div class="prompt text-sm text-muted sm:text-base">
+                            git log --career<span class="hidden sm:inline"> --graph</span>
+                        </div>
+                        <h2 class="font-display text-[38px] leading-none font-bold tracking-[-1px] sm:text-5xl">
+                            Experience
+                        </h2>
+                    </div>
+                    <span class="hidden text-sm text-muted sm:inline"
+                        ><%= site.experience.length %> commits · <%= site.experience.at(-1).start.slice(-4) %> →
+                        now</span
+                    >
                 </div>
+
+                <ol class="flex flex-col gap-(--commit-gap)">
+                    <% site.experience.forEach(function(e, i) { var current = e.end === 'present'; %>
+                    <li
+                        class="grid grid-cols-[20px_minmax(0,1fr)] gap-x-3.5 lg:grid-cols-[28px_112px_minmax(0,1fr)_220px] lg:gap-x-5"
+                    >
+                        <div class="relative" aria-hidden="true">
+                            <span class="git-dot <%= current ? 'git-dot-current' : '' %>"></span>
+                            <% if (i < site.experience.length - 1) { %><span class="git-line"></span><% } %>
+                        </div>
+                        <span class="hidden pt-px text-base text-amber lg:block"><%= e.hash %></span>
+                        <div class="flex flex-col gap-2 lg:gap-2.5">
+                            <div class="flex justify-between text-[13px] lg:hidden">
+                                <span class="text-amber"><%= e.hash %></span>
+                                <span class="text-muted"><%= e.start %> — <%= e.end %></span>
+                            </div>
+                            <h3 class="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3">
+                                <span class="text-[17px] font-semibold lg:text-[19px]"
+                                    ><%= e.role %><span class="hidden font-normal text-muted lg:inline">
+                                        · <%= e.company %></span
+                                    ></span
+                                >
+                                <span class="text-sm font-normal text-muted lg:hidden"
+                                    ><%= e.company %><% if (current) { %> ·
+                                    <span class="text-amber">HEAD → main</span><% } %></span
+                                >
+                                <% if (current) { %>
+                                <span
+                                    class="hidden border border-amber px-2 py-[3px] text-xs font-normal text-amber lg:inline"
+                                    >HEAD → main</span
+                                >
+                                <% } %>
+                            </h3>
+                            <p class="font-display text-[15px] leading-[1.55] lg:text-[17px] text-text-2">
+                                <%= e.summary %>
+                            </p>
+                            <% if (e.stats) { %>
+                            <ul class="flex flex-col gap-0.5 text-[13px] text-cactus sm:flex-row sm:gap-6 lg:text-sm">
+                                <% e.stats.forEach(function(s) { %>
+                                <li><%= s %></li>
+                                <% }); %>
+                            </ul>
+                            <% } %> <% if (e.tags.length) { %>
+                            <ul
+                                class="flex flex-wrap gap-1.5 text-[11px] text-text-2 lg:gap-2 lg:text-xs"
+                                aria-label="Tech"
+                            >
+                                <% e.tags.forEach(function(t) { %>
+                                <li class="chip"><%= t %></li>
+                                <% }); %>
+                            </ul>
+                            <% } %>
+                        </div>
+                        <span class="hidden text-right text-[15px] text-muted lg:block"
+                            ><%= e.start %> — <%= e.end %></span
+                        >
+                    </li>
+                    <% }); %>
+                </ol>
             </section>
 
             <!-- Works -->
-            <section class="min-h-screen snap-start bg-white text-navy flex items-center" data-section="3">
-                <div class="mx-auto p-4">
-                    <h2 class="text-2xl text-center mb-8 reveal">Current & Previous Work</h2>
-                    <div class="flex flex-wrap container mx-auto items-stretch">
-                        <% site.works.forEach(function(w) { %>
-                        <div class="lg:w-1/3 sm:w-1/2 w-full p-4 reveal">
-                            <div
-                                class="overflow-hidden shadow-md h-full flex flex-col <%= w.href ? 'transform hover:scale-105 transition duration-100 cursor-pointer' : '' %>"
-                            >
-                                <% if (w.href) { %>
-                                <a href="<%= w.href %>" target="_blank" rel="noopener noreferrer">
-                                    <picture>
-                                        <source srcset="<%= w.image.avif %>" type="image/avif" />
-                                        <img
-                                            src="<%= w.image.src %>"
-                                            alt="<%= w.title %>"
-                                            width="<%= w.image.width %>"
-                                            height="<%= w.image.height %>"
-                                            class="blur-up w-full"
-                                            style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
-                                            loading="lazy"
-                                        />
-                                    </picture>
-                                </a>
-                                <% } else { %>
-                                <picture>
-                                    <source srcset="<%= w.image.avif %>" type="image/avif" />
-                                    <img
-                                        src="<%= w.image.src %>"
-                                        alt="<%= w.title %>"
-                                        width="<%= w.image.width %>"
-                                        height="<%= w.image.height %>"
-                                        class="blur-up w-full"
-                                        style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
-                                        loading="lazy"
-                                    />
-                                </picture>
-                                <% } %>
-                                <div class="px-6 py-4 bg-white flex-1 flex flex-col justify-between">
-                                    <h3 class="text-lg"><%= w.title %></h3>
-                                    <p class="font-light my-2"><%= w.description %></p>
-                                    <ul class="flex">
-                                        <% w.stack.forEach(function(s) { %>
-                                        <li
-                                            class="mr-4 bg-navy px-2 py-1"
-                                            title="<%= s.label %>"
-                                            aria-label="<%= s.label %>"
-                                        >
-                                            <i class="<%= s.icon %> text-gold" aria-hidden="true"></i>
-                                        </li>
-                                        <% }); %>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <% }); %>
+            <section
+                id="works"
+                class="flex flex-col gap-7 border-t border-line-soft px-6 py-16 sm:px-12 lg:gap-10 lg:px-24 lg:pt-24 lg:pb-28"
+            >
+                <div class="flex items-baseline justify-between">
+                    <div class="flex flex-col gap-3 lg:gap-4">
+                        <div class="prompt text-sm text-muted sm:text-base">ls -la ~/works</div>
+                        <h2 class="font-display text-[38px] leading-none font-bold tracking-[-1px] sm:text-5xl">
+                            Selected work
+                        </h2>
                     </div>
+                    <a
+                        href="<%= site.links.github %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hidden text-sm text-amber hover:text-amber-hover sm:inline"
+                        >all repositories ↗</a
+                    >
+                </div>
+
+                <div class="grid grid-cols-1 gap-5 sm:grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+                    <% var cardBody = function (w) { %>
+                    <div
+                        class="card-header flex h-9 shrink-0 items-center justify-between gap-2 px-3.5 text-xs sm:h-10 sm:px-5 sm:text-[13px]"
+                    >
+                        <span class="truncate"
+                            ><span class="text-muted">drwxr-xr-x</span>&nbsp;&nbsp;<span class="card-dir text-amber"
+                                ><%= w.slug %>/</span
+                            ></span
+                        >
+                        <span class="flex items-center gap-2 text-muted"
+                            ><% if (w.featured) { %>featured<% } %><span
+                                class="card-cursor text-amber"
+                                aria-hidden="true"
+                                >▌</span
+                            ></span
+                        >
+                    </div>
+                    <% if (w.screen) { %>
+                    <pre
+                        class="overflow-hidden bg-navy p-4 text-xs leading-normal text-text-2 sm:px-5 sm:text-[13px] card-media <%= w.featured ? 'lg:p-8 lg:text-[15px] lg:leading-[1.7]' : '' %>"
+                    ><code><% w.screen.forEach(function(line, i) { %><%= i ? '\n' : '' %><% if (line.startsWith('$ ')) { %><span class="text-amber">$</span> <span class="text-text"><%= line.slice(2) %></span><% } else { %><%= line %><% } %><% }); %></code></pre>
+                    <% } else { %>
+                    <picture class="card-media block overflow-hidden">
+                        <source srcset="<%= w.image.avif %>" type="image/avif" />
+                        <img
+                            src="<%= w.image.src %>"
+                            alt="<%= w.image.alt %>"
+                            width="<%= w.image.width %>"
+                            height="<%= w.image.height %>"
+                            class="blur-up block size-full object-cover <%= w.image.top ? 'object-top' : '' %>"
+                            style="background: url('<%= w.image.placeholder %>') center/cover no-repeat"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </picture>
+                    <% } %>
+                    <div
+                        class="flex grow flex-col gap-2.5 p-[18px] <%= w.featured ? 'sm:gap-4 lg:px-6 lg:py-7' : 'sm:gap-3 sm:p-5' %>"
+                    >
+                        <h3
+                            class="font-display font-bold <%= w.featured ? 'text-[28px] lg:text-4xl lg:tracking-[-0.5px]' : 'text-[22px] sm:text-2xl' %>"
+                        >
+                            <%= w.title %>
+                        </h3>
+                        <p
+                            class="font-display leading-normal text-text-2 <%= w.featured ? 'text-base lg:text-lg' : 'text-[15px] sm:text-base' %>"
+                        >
+                            <%= w.description %>
+                        </p>
+                        <% if (w.bullets) { %>
+                        <ul class="flex flex-col gap-1 text-[13px] text-text-2 sm:gap-2 sm:text-sm">
+                            <% w.bullets.forEach(function(b) { %>
+                            <li><span class="text-cactus">+</span> <%= b %></li>
+                            <% }); %>
+                        </ul>
+                        <% } %>
+                        <div class="mt-auto flex items-center justify-between gap-3 pt-1">
+                            <ul
+                                class="flex flex-wrap gap-1.5 text-[11px] text-text-2 sm:gap-2 sm:text-xs"
+                                aria-label="Tech"
+                            >
+                                <% w.tags.forEach(function(t) { %>
+                                <li class="chip"><%= t %></li>
+                                <% }); %>
+                            </ul>
+                            <% if (w.href) { %>
+                            <span class="card-action shrink-0 text-[13px] text-amber sm:text-sm"
+                                ><%= w.action %> ↗</span
+                            >
+                            <% } else { %>
+                            <span class="shrink-0 text-[13px] text-muted sm:text-sm"><%= w.action %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% }; %> <% site.works.forEach(function(w) { %> <% if (w.href) { %>
+                    <a
+                        href="<%= w.href %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="card flex flex-col <%= w.featured ? 'card-featured' : '' %>"
+                    >
+                        <% cardBody(w); %>
+                    </a>
+                    <% } else { %>
+                    <article class="card flex flex-col <%= w.featured ? 'card-featured' : '' %>">
+                        <% cardBody(w); %>
+                    </article>
+                    <% } %> <% }); %>
                 </div>
             </section>
+
+            <!-- Contact -->
+            <section id="contact" class="flex flex-col border-t border-line-soft">
+                <div class="flex flex-col gap-4 px-6 pt-16 sm:gap-6 sm:px-12 lg:px-24 lg:pt-28">
+                    <div class="prompt text-sm text-muted sm:text-base">./contact.sh</div>
+                    <h2
+                        class="font-display text-[46px] leading-[0.98] font-extrabold tracking-[-1.5px] sm:text-7xl lg:text-[88px] lg:leading-[0.95] lg:tracking-[-2.5px]"
+                    >
+                        <%= site.contact.heading %>
+                    </h2>
+                    <p
+                        class="max-w-[620px] font-display text-[17px] leading-[1.55] text-text-2 sm:text-[19px] sm:leading-[1.6]"
+                    >
+                        <%= site.contact.text %>
+                    </p>
+                    <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                        <a href="<%= site.links.github %>" target="_blank" rel="noopener noreferrer" class="btn-primary"
+                            >github ↗</a
+                        >
+                        <a
+                            href="<%= site.links.linkedin %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-secondary"
+                            >linkedin ↗</a
+                        >
+                    </div>
+                </div>
+                <svg
+                    class="mt-16 block h-[150px] w-full sm:hidden"
+                    viewBox="0 0 390 150"
+                    preserveAspectRatio="xMidYMax slice"
+                    aria-hidden="true"
+                >
+                    <circle class="fill-panel" cx="250" cy="140" r="40" />
+                    <path class="fill-footer" d="M0 150 V116 L50 116 L60 106 L140 106 L150 118 L390 120 V150 Z" />
+                    <g class="stroke-panel" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke-width="12" d="M330 152 V56" />
+                        <path stroke-width="9" d="M330 106 H316 Q308 106 308 98 V76" />
+                        <path stroke-width="9" d="M330 88 H344 Q352 88 352 80 V62" />
+                    </g>
+                </svg>
+                <svg
+                    class="mt-16 hidden h-[260px] w-full sm:block"
+                    viewBox="0 0 1440 260"
+                    preserveAspectRatio="xMidYMax slice"
+                    aria-hidden="true"
+                >
+                    <circle class="fill-panel" cx="1040" cy="236" r="64" />
+                    <path
+                        class="fill-footer"
+                        d="M0 260 V200 L120 200 L136 184 L260 184 L276 204 L520 206 L540 176 L700 176 L716 200 L1180 204 L1200 186 L1340 186 L1356 202 L1440 202 V260 Z"
+                    />
+                    <g class="stroke-panel" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke-width="18" d="M1240 262 V96" />
+                        <path stroke-width="14" d="M1240 180 H1218 Q1206 180 1206 168 V130" />
+                        <path stroke-width="14" d="M1240 150 H1264 Q1276 150 1276 138 V108" />
+                        <path stroke-width="12" d="M220 262 V150" />
+                        <path stroke-width="9" d="M220 210 H236 Q244 210 244 202 V178" />
+                        <path stroke-width="10" d="M860 262 V190" />
+                        <path stroke-width="8" d="M860 226 H848 Q842 226 842 220 V204" />
+                    </g>
+                </svg>
+            </section>
         </main>
+
+        <footer
+            class="flex flex-col gap-1.5 bg-footer px-6 pt-5 pb-12 text-xs text-muted sm:h-[72px] sm:flex-row sm:items-center sm:justify-between sm:px-12 sm:py-0 sm:text-[13px] lg:px-24"
+        >
+            <span><%= site.footer.copyright %></span>
+            <span><%= site.footer.exit %></span>
+            <span class="hidden sm:inline"><%= site.footer.tagline %></span>
+        </footer>
+
+        <!-- tmux status bar -->
+        <nav
+            class="tmux fixed inset-x-0 bottom-0 z-50 flex items-center justify-between bg-amber px-2 text-[11px] text-navy sm:px-5 sm:text-[13px]"
+            aria-label="Sections"
+        >
+            <span class="hidden font-semibold sm:inline">[honnold.me]</span>
+            <div class="flex w-full justify-between sm:w-auto sm:gap-1">
+                <% site.tmux.forEach(function(t) { %>
+                <a href="<%= t.href %>" class="px-[5px] py-[3px] sm:px-2.5 sm:py-1" data-tmux-link
+                    ><span class="hidden sm:inline"><%= t.label %></span
+                    ><span class="sm:hidden"><%= t.short || t.label %></span></a
+                >
+                <% }); %>
+            </div>
+            <span class="hidden lg:inline"><%= site.location.coords %></span>
+        </nav>
 
         <script type="module" src="./src/js/main.js"></script>
     </body>

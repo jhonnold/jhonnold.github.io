@@ -1,148 +1,290 @@
+const links = {
+    github: 'https://github.com/jhonnold',
+    linkedin: 'https://www.linkedin.com/in/jay-honnold-158b553a9/',
+};
+
+const role = 'Senior Software Engineer';
+const company = 'Cognite';
+
 export const site = {
     meta: {
         title: 'Jay Honnold',
-        description: "Jay Honnold's Portfolio and Website",
-        keywords: 'developer, fullstack, software, portfolio',
+        description:
+            'Jay Honnold is a senior software engineer building platforms for AI agents. He also runs a homelab with local LLMs and writes chess engines.',
+        keywords: 'software engineer, AI agents, LLM, MCP, homelab, Proxmox, chess engine, berserk',
         url: 'https://honnold.me',
         ogImage: 'https://honnold.me/images/jay.webp',
     },
+    links,
+    location: {
+        city: 'Phoenix, AZ',
+        coords: '33.45°N 112.07°W',
+    },
+    nav: [
+        { label: '~/about', href: '#about' },
+        { label: '~/experience', href: '#experience' },
+        { label: '~/works', href: '#works' },
+        { label: '~/contact', href: '#contact' },
+    ],
+    tmux: [
+        { label: '0:hero', href: '#top' },
+        { label: '1:about', href: '#about' },
+        { label: '2:experience', short: '2:exp', href: '#experience' },
+        { label: '3:works', href: '#works' },
+        { label: '4:contact', href: '#contact' },
+    ],
+    hero: {
+        name: 'Jay Honnold',
+        lede: 'Senior software engineer building platforms for AI agents. At home I run a homelab and local LLMs.',
+        status: `${role} @ ${company}`,
+    },
     about: {
-        heading: 'Jay Honnold',
-        text: "I'm a senior software engineer specializing in system design and full-stack development with extensive experience at AWS and Amazon. I've led initiatives that transformed manual processes into automated solutions, saving years of effort. Throughout my career, I've architected scalable systems that bridge complex business requirements with robust technical implementation - my work focuses on building maintainable, secure solutions that empower engineering teams to deliver value efficiently.",
-        specific:
-            "My professional expertise centers on building and modernizing full-stack systems at scale - leading migrations to microservices architectures, developing automation tools for CI/CD pipelines, and engineering backends using Spring and Express with SQL and NoSQL databases. Beyond my professional work, I'm driven by a genuine love for coding and problem-solving, which I pursue through independent projects. This passion is best reflected in Berserk, an open-source chess engine I've built in C that ranks among the world's strongest. Developing Berserk isn't about professional advancement - it's about the joy of creating something complex and elegant, the satisfaction of optimization, and the intellectual challenge of teaching machines to think. Whether at work or at home, I'm motivated by elegant solutions.",
+        headline: ['Agents by day,', 'homelab by night.'],
+        paragraphs: [
+            "I'm a senior software engineer at Cognite, where I work on the platform behind Atlas AI: the agentic loop, model integrations, and the tools the agents call. Before that I spent five years at Amazon and AWS, mostly turning manual processes into automated systems. At AWS that work saved more than 50 developer-years.",
+            "At home I run a three-node Proxmox cluster the way I'd run production: configs in git with CI, monitoring, and encrypted offsite backups. It also hosts my local LLM stack, where I work on model serving, tracing, and agent memory on an RTX 4090. In my spare time I write Berserk, an open-source chess engine in C that ranks among the strongest in the world.",
+        ],
+        // Code panel lines; the template colors `export const`, "strings" and // comments.
+        code: {
+            desktop: [
+                'export const jay = {',
+                '  role: "Senior Software Engineer",',
+                '  focus: ["AI agents", "LLM platforms", "system design"],',
+                '  languages: ["TypeScript", "Java", "Kotlin", "Go", "Python", "C", "C++"],',
+                '  basedIn: "Phoenix, AZ",  // saguaro country',
+                '  offHours: ["homelab", "local LLMs", "Berserk"],',
+                '};',
+            ],
+            mobile: [
+                'export const jay = {',
+                '  role: "Senior SWE",',
+                '  focus: ["AI agents", "LLMs"],',
+                '  basedIn: "Phoenix, AZ",',
+                '  offHours: "homelab",',
+                '};',
+            ],
+        },
         image: {
             webp: '/images/jay.webp',
             avif: '/images/jay.avif',
             placeholder: '/images/jay-placeholder.webp',
             width: 640,
             height: 1138,
-        },
-        links: {
-            github: 'https://github.com/jhonnold',
+            alt: 'Jay Honnold standing on a snowy overlook',
+            tag: '~/photos/overlook.jpg',
         },
     },
     experience: [
         {
-            title: 'SDE I / SDE II / SDE III',
+            hash: '9e1c0af',
+            role,
+            company,
+            start: 'Mar 2026',
+            end: 'present',
+            summary:
+                "Working on the harness and platform behind Atlas AI, Cognite's low-code workbench for industrial AI agents. That covers the agentic loop, model integrations across Azure, AWS, and Google Cloud, Cognite Data Fusion (CDF) tools and the CDF MCP server, and services that back agent tools, such as a sandbox. Plus a little frontend work.",
+            tags: ['LLMs', 'MCP', 'Azure', 'AWS', 'Google Cloud'],
+        },
+        {
+            hash: 'a1f3c9e',
+            role: 'SDE I → II → Senior Software Engineer',
             company: 'AWS',
-            start: 'April 2022',
-            end: 'Present',
-            details:
-                'Designed and implemented internal automation tools to support AWS teams in global and regional expansion initiatives. Built solutions to streamline 3 common manual processes, developed validation services for testing automation reliability, created code templates to ensure expansion readiness, and implemented AI-driven scripts to automate the code refactoring necessary to achieve expansion automation. Leveraged JVM languages, Typescript, Ruby, Golang, and Python with AWS infrastructure to deploy solutions that supported over 1300 pipelines and saved over 50 developer years of effort.',
+            start: 'Apr 2022',
+            end: 'Mar 2026',
+            summary:
+                'Led internal automation for AWS global and regional expansion: validation services, code templates for expansion readiness, and scripts that use AI to refactor code for new regions.',
+            stats: ['+1,300 pipelines supported', '+50 developer-years saved'],
+            tags: ['Java', 'Kotlin', 'TypeScript', 'Ruby', 'Go', 'Python'],
         },
         {
-            title: 'SDE I',
+            hash: '7be20d4',
+            role: 'SDE I',
             company: 'Amazon',
-            start: 'February 2021',
-            end: 'April 2022',
-            details:
-                'Developed and maintained a scalable order ingestion system for Multi-Channel Fulfillment, supporting thousands of orders daily. Worked on the modernization of legacy components, the initial migration to native AWS infrastructure, and resolved operational issues. Built and deployed solutions using JVM-based languages on AWS infrastructure.',
+            start: 'Feb 2021',
+            end: 'Apr 2022',
+            summary:
+                'Built and maintained order ingestion for Multi-Channel Fulfillment, handling thousands of orders a day. Also modernized legacy components and worked on the initial move to native AWS.',
+            tags: ['Java', 'Kotlin', 'AWS'],
         },
         {
-            title: 'Full-Stack Developer',
+            hash: '3c91e02',
+            role: 'Full-Stack Developer',
             company: 'Allstate',
-            start: 'March 2019',
-            end: 'January 2021',
-            details:
-                'Worked on the development of an internal risk assessment platform that automatically evaluates application artifacts against security and compliance standards, assessing over 100 components daily to determine production deployment readiness. Led the refactoring of a monolithic API into 6 independent microservices, improving system maintainability and enabling independent deployment cycles. Redesigned and rebuilt the UI to comply with accessibility standards, enhancing data visualization and user experience. Engineered the full solution using React, JavaScript, Java, Spring, Node.js, Express, and MSSQL.',
+            start: 'Mar 2019',
+            end: 'Jan 2021',
+            summary:
+                'Worked on a risk-assessment platform that checks 100+ components a day for production readiness. Led the split of its monolithic API into six microservices and rebuilt the UI to meet accessibility standards.',
+            stats: ['+100 components assessed / day', '1 monolith → 6 services'],
+            tags: ['React', 'Java', 'Spring', 'Node.js', 'MSSQL'],
         },
         {
-            title: 'Full-Stack Developer',
+            hash: '0d4a7b1',
+            role: 'Full-Stack Developer',
             company: 'Coder Inc.',
-            start: 'June 2017',
-            end: 'August 2018',
-            details:
-                'Developed the Android application Victor, a mobile tool for veterans. Built the "Coder Platform" web application that streamlines collaboration between non-technical users and developers, enhancing project intake efficiency. Architected a new version of the "Coder Platform" with a scalable backend and optimized database design. Engineered all solutions using React Native, React, Ruby on Rails, Express, Node.js, and PostgreSQL.',
+            start: 'Jun 2017',
+            end: 'Aug 2018',
+            summary:
+                'Built Victor, an Android app for veterans, and the Coder Platform, a web app that connects non-technical clients with developers.',
+            tags: ['React Native', 'React', 'Rails', 'PostgreSQL'],
         },
     ],
     works: [
         {
-            title: 'Berserk Chess Engine',
-            stack: [
-                { icon: 'devicon-c-plain', label: 'C' },
-                { icon: 'devicon-gcc-plain', label: 'GCC' },
+            slug: 'homelab',
+            title: 'Homelab',
+            featured: true,
+            description: 'Three-node Proxmox cluster run with the same practices I use on production systems at work.',
+            bullets: [
+                'every config lives in git, goes through a PR and CI, then deploys from the repo',
+                'Prometheus, Grafana, and Loki for metrics and logs, plus uptime checks',
+                'encrypted on-site and offsite backups, and written incident reviews',
+                'the always-on autonomous agent runs under its own least-privilege account',
             ],
+            tags: ['Proxmox', 'Docker', 'Prometheus', 'Grafana', 'CI/CD'],
+            action: 'private',
+            // Terminal-style panel shown in place of a screenshot; lines starting with '$ ' are commands.
+            screen: [
+                '$ cat ~/homelab/nodes',
+                'node     cpu     ram   gpu',
+                'alpha    3950X   32G   -',
+                'bravo    5950X  128G   4090',
+                'charlie  8500G   30G   -',
+                '$ ls ~/homelab/docs',
+                'hosts/  incidents/  plans/',
+                '$ ls ~/homelab/.gitea/workflows',
+                'lint.yaml  smoke.yaml',
+            ],
+        },
+        {
+            slug: 'local-llm',
+            title: 'Local LLM stack',
+            description: 'Self-hosted model serving and agent infrastructure on an RTX 4090 host with 128 GB of RAM.',
+            bullets: [
+                'one OpenAI-compatible endpoint for many models, so tools switch models without code changes',
+                'LLM calls traced in Langfuse, with agent memory served over MCP',
+            ],
+            tags: ['llama.cpp', 'MCP', 'Langfuse', 'Docker'],
+            action: 'private',
+            screen: [
+                '$ ls ~/models',
+                'qwen3.8-27B   gemma4-31B',
+                'gpt-oss-120b  deepseek-v4-flash',
+                'bge-m3',
+                '$ ls ~/agents',
+                'hermes  claude-code  opencode',
+            ],
+        },
+        {
+            slug: 'berserk',
+            title: 'Berserk',
+            featured: true,
+            description: 'Open-source UCI chess engine in C, ranked among the strongest engines in the world.',
+            bullets: [
+                'rated 3514 on CCRL 40/15, and 3600+ on several other rating lists',
+                "competes in TCEC's Premier Division, the top tier of computer chess",
+                'wrote my own neural-network trainer; it trained every net through v8.5.1',
+            ],
+            tags: ['C', 'GCC', 'NNUE'],
+            action: 'github',
+            href: 'https://github.com/jhonnold/berserk',
             image: {
                 src: '/images/works/berserk.webp',
                 avif: '/images/works/berserk.avif',
                 placeholder: '/images/works/berserk-placeholder.webp',
                 width: 640,
                 height: 340,
+                alt: 'Berserk chess engine',
             },
-            description:
-                'UCI-compliant chess engine written in C. Utilizes an optimized minimax search with a self-trained neural network for position evaluation.',
-            href: 'https://github.com/jhonnold/berserk',
         },
         {
+            slug: 'live-chess-viewer',
             title: 'Live Chess Viewer',
-            stack: [
-                { icon: 'devicon-typescript-plain', label: 'TypeScript' },
-                { icon: 'devicon-express-original', label: 'Express' },
-                { icon: 'devicon-nodejs-plain', label: 'Node.js' },
+            description:
+                "Web viewer for broadcasts from Tom's Live Chess server. CCRL uses it to broadcast its events.",
+            bullets: [
+                "reverse-engineered Tom's Live Chess Server UDP protocol",
+                "spare engines analyze the most-watched games live, next to the players' own output",
             ],
+            tags: ['TypeScript', 'Node'],
+            action: 'live',
+            href: 'https://ccrl.live',
             image: {
                 src: '/images/works/tlcv.webp',
                 avif: '/images/works/tlcv.avif',
                 placeholder: '/images/works/tlcv-placeholder.webp',
                 width: 640,
                 height: 408,
+                alt: 'Live Chess Viewer',
+                top: true,
             },
-            description:
-                "Web viewer service for Tom's live chess server broadcasts. Officially used by CCRL to broadcast chess events.",
-            href: 'https://ccrl.live',
         },
         {
-            title: 'Torch Chess Engine',
-            stack: [
-                { icon: 'devicon-cplusplus-plain', label: 'C++' },
-                { icon: 'devicon-gcc-plain', label: 'GCC' },
+            slug: 'torch',
+            title: 'Torch',
+            description: 'UCI chess engine in C++, built with a group of leading engine developers.',
+            bullets: [
+                'one of five founding developers',
+                'ranked the #2 engine in the world within eight months',
+                "runs in Chess.com's game analysis",
             ],
+            tags: ['C++', 'GCC'],
+            action: 'read',
+            href: 'https://www.chess.com/news/view/torch-chess-engine',
             image: {
                 src: '/images/works/torch.webp',
                 avif: '/images/works/torch.avif',
                 placeholder: '/images/works/torch-placeholder.webp',
                 width: 640,
                 height: 359,
+                alt: 'Torch chess engine',
             },
-            description:
-                'UCI-compliant chess engine written in C++. Collaborated with leading chess developers to build one of the strongest engines to date.',
-            href: 'https://www.chess.com/news/view/torch-chess-engine',
         },
         {
+            slug: 'fndash',
             title: 'FN Dash',
-            stack: [
-                { icon: 'devicon-python-plain', label: 'Python' },
-                { icon: 'devicon-react-original', label: 'React' },
-                { icon: 'devicon-postgresql-plain', label: 'PostgreSQL' },
-            ],
+            description: 'Fortnite statistics tracker with automated data collection.',
+            tags: ['Python', 'React', 'Postgres'],
+            action: 'github',
+            href: 'https://github.com/jhonnold/fndash',
             image: {
                 src: '/images/works/fndash.webp',
                 avif: '/images/works/fndash.avif',
                 placeholder: '/images/works/fndash-placeholder.webp',
                 width: 640,
                 height: 403,
+                alt: 'FN Dash stats dashboard',
+                top: true,
             },
-            description: 'Fortnite statistics tracking website. Automated data collection upon user registration.',
-            href: 'https://github.com/jhonnold/fndash',
         },
         {
+            slug: 'react-chartjs-2',
             title: 'react-chartjs-2',
-            stack: [
-                { icon: 'devicon-react-original', label: 'React' },
-                { icon: 'devicon-npm-original-wordmark', label: 'npm' },
+            description: 'React wrapper for Chart.js.',
+            bullets: [
+                "my rewrite became the library's current codebase",
+                '5.4M npm downloads a week, 6.9k GitHub stars',
             ],
+            tags: ['React', 'npm'],
+            action: 'docs',
+            href: 'https://react-chartjs-2.js.org/',
             image: {
                 src: '/images/works/chartjs.webp',
                 avif: '/images/works/chartjs.avif',
                 placeholder: '/images/works/chartjs-placeholder.webp',
                 width: 640,
                 height: 397,
+                alt: 'react-chartjs-2 documentation',
+                top: true,
             },
-            description:
-                'React wrapper for the popular Chart.js library. Significant contributor to the open-source project during its React modernization.',
-            href: 'https://react-chartjs-2.js.org/',
         },
     ],
-    nav: ['Home', 'About', 'Experience', 'Works'],
+    contact: {
+        heading: "Let's build something.",
+        text: 'Happy to talk about AI agents, homelabs, or chess engine tuning.',
+    },
+    footer: {
+        copyright: '© 2026 Jay Honnold',
+        exit: '[process exited with code 0]',
+        tagline: 'built in the Sonoran Desert',
+    },
 };
